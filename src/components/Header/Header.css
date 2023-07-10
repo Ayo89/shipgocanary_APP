@@ -1,0 +1,15 @@
+.button {
+  font-size: 1.33rem !important;
+  color: #000 !important; 
+  font-weight: 700 !important;
+  
+} 
+.content-img{
+  width: 9rem;
+  height: 7.11rem;
+  flex-shrink: 0;
+}
+.img-logo {
+  width: 9rem;
+  height: 7.11rem;
+}
