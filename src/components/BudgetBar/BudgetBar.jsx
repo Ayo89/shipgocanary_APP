@@ -59,11 +59,15 @@ useEffect(() => {
       <div className="wrapper-budget">
         <SelectCategory />
         <div>
-          <InputLabel htmlFor="component-outlined">¿Desde?</InputLabel>
+          <InputLabel id="label-budget" htmlFor="component-outlined">
+            ¿Desde?
+          </InputLabel>
           <Autocomplete
+            className="imput-budget"
+            id="imputs"
             options={direction ? direction : [{ label: 'not options' }]}
             label="Name"
-            sx={{ width: 150 }}
+
             onChange={handleDesde}
             renderInput={(params) => (
               <TextField
@@ -76,22 +80,39 @@ useEffect(() => {
           />
         </div>
         <div>
-          <InputLabel htmlFor="component-outlined">Hasta?</InputLabel>
-          <OutlinedInput label="Name" onChange={handleHasta} />
+          <InputLabel id="label-budget" htmlFor="component-outlined">
+            Hasta?
+          </InputLabel>
+          <Autocomplete
+            className="imput-budget"
+            id="imputs"
+            options={direction ? direction : [{ label: 'not options' }]}
+            label="Name"
+
+            onChange={handleDesde}
+            renderInput={(params) => (
+              <TextField
+                onChange={handleDesde}
+                type="text"
+                {...params}
+                label="Hasta"
+              />
+            )}
+          />
+        </div>
+        <div id="wrapper-buttom">
+          <Button
+            className="budget-buttom"
+            style={{
+              color: '#000',
+              height: '4rem',
+              backgroundColor: 'var(--background-buttom',
+            }}
+          >
+            Request a quote
+          </Button>
         </div>
       </div>
-      <Button
-        className="budget-buttom"
-        style={{
-          color: '#000',
-          width: '16rem',
-          height: '3rem',
-          backgroundColor: 'var(--background-buttom',
-          margin: '1rem 0 0 4rem',
-        }}
-      >
-        Request a quote
-      </Button>
     </div>
   )
 }

@@ -30,14 +30,14 @@ export default function Header() {
             component="div"
             sx={{ flexGrow: 1 }}
           ></Typography>
-          <Button className="button">Login</Button>
+          <Button id="button">Login</Button>
           <Button
-            className="button"
+            id="button"
             style={{
               width: '9.89rem',
               height: '2.89rem',
               backgroundColor: 'var(--background-buttom',
-              marginLeft: '1rem',
+              marginLeft: '2.4rem',
             }}
           >
             Signup

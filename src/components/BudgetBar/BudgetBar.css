@@ -1,21 +1,49 @@
-.container-budget{
-  width: 100%;
+.container-budget {
+  height: 20%;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-
-.wrapper-budget{
-  width: 70%;
+.wrapper-budget {
+  height: 6rem;
+  width: 60%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
- 
+  align-items: center;
+  justify-content: center;
+  gap: 8rem;
+  padding: 2rem 2rem 2.6rem 2rem;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+
+#wrapper-buttom {
+  height: 100%;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 
-.budget-buttom{
-  margin-top: 24px;
-  width: 29%;
-  display: inline;
+.budget-buttom {
+  width: 100% !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  color: #000 !important;
+}
+
+.budget-buttom:hover {
+  background-color: var(--background-color) !important;
+  transform: scale(1.1);
+}
+#imputs{
+  width: 20% ;
+}
+.imput-budget {
+  background-color: #fff;
+}
+
+#label-budget {
+  font-size: 1.3rem;
 }

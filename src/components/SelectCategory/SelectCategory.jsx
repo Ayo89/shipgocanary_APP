@@ -5,6 +5,7 @@ import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
+import './SelectCategory.css'
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
@@ -58,16 +59,18 @@ export default function SelectCategory() {
   
   return (
     <div>
-      <InputLabel id="demo-multiple-name-label">Category</InputLabel>
+      <InputLabel id="category">Escoge una categoría</InputLabel>
       <Select
-        style={{ width: '300px' }}
-        labelId="demo-multiple-name-label"
+        className="imput-budget"
+        style={{ width: '350px' }}
+        labelId="category"
         id="demo-multiple-name"
         multiple
         value={personName}
         onChange={handleChange}
-        input={<OutlinedInput label="Name" />}
+        input={<OutlinedInput label="category" />}
         MenuProps={MenuProps}
+        label='Category'
       >
         {names.map((name) => (
           <MenuItem

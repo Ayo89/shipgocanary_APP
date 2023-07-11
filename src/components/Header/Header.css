@@ -1,9 +1,12 @@
-.button {
-  font-size: 1.33rem !important;
-  color: #000 !important; 
-  font-weight: 700 !important;
-  
-} 
+#button {
+  font-size: 1.30rem ;
+  color: #000 ; 
+  font-weight: 700 ;
+}
+#button:hover{
+  transform: scale(1.1);
+}
+
 .content-img{
   width: 9rem;
   height: 7.11rem;
