@@ -1,87 +1,51 @@
-import * as React from 'react'
-import { useTheme } from '@mui/material/styles'
-import OutlinedInput from '@mui/material/OutlinedInput'
+import React, { useEffect, useState } from 'react'
 import InputLabel from '@mui/material/InputLabel'
-import MenuItem from '@mui/material/MenuItem'
-import FormControl from '@mui/material/FormControl'
-import Select from '@mui/material/Select'
 import './SelectCategory.css'
+import { Autocomplete, TextField, Typography } from '@mui/material'
 
-const ITEM_HEIGHT = 48
-const ITEM_PADDING_TOP = 8
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-}
-
-const names = [
-  'Oliver Hansen',
-  'Van Henry',
-  'April Tucker',
-  'Ralph Hubbard',
-  'Omar Alexander',
-  'Carlos Abbott',
-  'Miriam Wagner',
-  'Bradley Wilkerson',
-  'Virginia Andrews',
-  'Kelly Snyder',
+const lala = [
+  { label: 'The Shawshank Redemption', year: 1994 },
+  { label: 'The Godfather', year: 1972 },
+  { label: 'The Godfather: Part II', year: 1974 },
+  { label: 'The Dark Knight', year: 2008 },
+  { label: '12 Angry Men', year: 1957 },
+  { label: "Schindler's List", year: 1993 },
+  { label: 'Pulp Fiction', year: 1994 },
 ]
 
-function getStyles(name, personName, theme) {
-  return {
-    fontWeight:
-      personName.indexOf(name) === -1
-        ? theme.typography.fontWeightRegular
-        : theme.typography.fontWeightMedium,
-  }
-}
+
 
 export default function SelectCategory() {
-  const theme = useTheme()
-  const [personName, setPersonName] = React.useState([])
+const [category, setCategory] = useState()
 
-  const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event
-    setPersonName(
-      // On autofill we get a stringified value.
-      typeof value === 'string' ? value.split(',') : value
-    )
-  }
 
+const handleCategory = (e) => {
+setCategory(e.target.value)
+}
 
 
   
   return (
-    <div>
-      <InputLabel id="category">Escoge una categoría</InputLabel>
-      <Select
+    <div id="content-imput">
+      <InputLabel id="label-budget" htmlFor="component-outlined">
+        <Typography variant="body1">Selecciona una categoría</Typography>
+      </InputLabel>
+      <Autocomplete
         className="imput-budget"
-        style={{ width: '350px' }}
-        labelId="category"
-        id="demo-multiple-name"
-        multiple
-        value={personName}
-        onChange={handleChange}
-        input={<OutlinedInput label="category" />}
-        MenuProps={MenuProps}
-        label='Category'
-      >
-        {names.map((name) => (
-          <MenuItem
-            key={name}
-            value={name}
-            style={getStyles(name, personName, theme)}
-          >
-            {name}
-          </MenuItem>
-        ))}
-      </Select>
+        id="imputs"
+        options={lala}
+        label="Name"
+        onChange={handleCategory}
+        renderInput={(params) => (
+          <TextField
+            value={category}
+            onChange={handleCategory}
+            type="text"
+            {...params}
+
+          />
+        )}
+      />
     </div>
   )
 }

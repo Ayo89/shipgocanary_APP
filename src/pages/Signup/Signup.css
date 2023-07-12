@@ -1,0 +1,70 @@
+.signup-container {
+  background-image: url('../../assets/transporte-logistica-buque-carga-contenedores-avion-carga_37416-103.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Esto hace que la imagen de fondo se mantenga fija mientras se desplaza el contenido de la página */
+  background-size: cover; /* Esto hace que la imagen cubra todo el contenedor */
+  background-position: center 90%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#card-signup {
+  width: 350px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3em;
+  border-radius: 8px;
+  background-color: rgba(119, 212, 252, 0.65);
+}
+
+.signup-container #content-input-signup{
+  width: 100%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  gap: 2em;
+}
+
+.signup-container
+  .MuiInputBase-root.MuiFilledInput-root.MuiFilledInput-underline.MuiInputBase-colorPrimary.MuiInputBase-formControl.MuiInputBase-adornedEnd.css-74o7k8-MuiInputBase-root-MuiFilledInput-root {
+  padding-right: 0;
+}
+.signup-container #input-signup{
+  background-color: #fff;
+}
+
+#signup-container #content-button {
+  width: 100%;
+  padding-top: 3em;
+  height: 14%;
+}
+#signup-container #content-button {
+  width: 100%;
+  padding-top: 3em;
+  height: 14%;
+}
+
+.signup-container #content-footer-signup{
+  width: 100%;
+  padding-top: 3em;
+  height: 14%;
+}
+
+#signup-button {
+  width: 100%;
+  height: 90%;
+}
+.signup-container .content-footer {
+  display: flex;
+  width: 80%;
+  height: 20%;
+  justify-content: space-between;
+  align-items: center;
+
+}

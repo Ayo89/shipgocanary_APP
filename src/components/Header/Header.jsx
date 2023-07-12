@@ -30,7 +30,9 @@ export default function Header() {
             component="div"
             sx={{ flexGrow: 1 }}
           ></Typography>
-          <Button id="button">Login</Button>
+          <Button id="button">
+            <Typography variant="button">LOGIN</Typography>
+          </Button>
           <Button
             id="button"
             style={{
@@ -40,7 +42,7 @@ export default function Header() {
               marginLeft: '2.4rem',
             }}
           >
-            Signup
+            <Typography variant="button">SIGNUP</Typography>
           </Button>
         </Toolbar>
       </AppBar>

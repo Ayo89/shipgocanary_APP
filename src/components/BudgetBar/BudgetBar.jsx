@@ -8,13 +8,15 @@ import Input from '@mui/material/Input'
 import InputLabel from '@mui/material/InputLabel'
 import OutlinedInput from '@mui/material/OutlinedInput'
 import './BudgetBar.css'
-import { Autocomplete, Button, TextField } from '@mui/material'
+import { Autocomplete, Button, TextField, Typography } from '@mui/material'
 import { getPlaces } from '../../../services/google.service'
 
 function BudgetBar() {
   const [desde, setDesde] = useState('')
   const [hasta, setHasta] = useState('')
   const [direction, setDirection] = useState('')
+  const [direction2, setDirection2] = useState('')
+
 
 
 const lala = [
@@ -27,15 +29,17 @@ const lala = [
   { label: 'Pulp Fiction', year: 1994 },
 ]
 
-  const handleDesde = (e) => {
-    setDesde(e.target.value)
-  }
-  const handleHasta = (e) => {
-    setDesde(e.target.value)
-  }
+const handleDesde = (event, value) => {
+  if (value) setDesde(value.label)
+}
+
+const handleHasta = (event, value) => {
+  if (value) setHasta(value.label)
+}
+
 
 const getAutocomplete = async () => {
-  const res = await getPlaces(desde.trim())
+  const res = await getPlaces(desde)
   const data =
     res.predictions &&
     res.predictions.map((option) => {
@@ -45,14 +49,24 @@ const getAutocomplete = async () => {
   setDirection(data)
 }
 
+const getAutocomplete2 = async () => {
+  const res = await getPlaces(hasta)
+  const data =
+    res.predictions &&
+    res.predictions.map((option) => {
+      const descriptionWithoutCommas = option.description.replace(/,/g, '')
+      return { label: descriptionWithoutCommas }
+    })
+  setDirection2(data)
+}
+
+useEffect(() => {
+  getAutocomplete2()
+}, [hasta])
 
 useEffect(() => {
   getAutocomplete()
 }, [desde])
-
-
-
-
 
   return (
     <div className="container-budget">
@@ -60,42 +74,44 @@ useEffect(() => {
         <SelectCategory />
         <div>
           <InputLabel id="label-budget" htmlFor="component-outlined">
-            ¿Desde?
+            <Typography variant="body1">¿Desde?</Typography>
           </InputLabel>
           <Autocomplete
+            isOptionEqualToValue={(option, value) =>
+              option.label === value.label
+            }
             className="imput-budget"
             id="imputs"
             options={direction ? direction : [{ label: 'not options' }]}
             label="Name"
-
             onChange={handleDesde}
             renderInput={(params) => (
               <TextField
-                onChange={handleDesde}
+                onChange={(e) => setDesde(e.target.value)}
                 type="text"
                 {...params}
-                label="Desde"
               />
             )}
           />
         </div>
         <div>
           <InputLabel id="label-budget" htmlFor="component-outlined">
-            Hasta?
+            <Typography variant="body1">¿Hasta?</Typography>
           </InputLabel>
           <Autocomplete
+            isOptionEqualToValue={(option, value) =>
+              option.label === value.label
+            }
             className="imput-budget"
             id="imputs"
-            options={direction ? direction : [{ label: 'not options' }]}
+            options={direction2 ? direction2 : [{ label: 'not options' }]}
             label="Name"
-
-            onChange={handleDesde}
+            onChange={handleHasta}
             renderInput={(params) => (
               <TextField
-                onChange={handleDesde}
+                onChange={(e) => setHasta(e.target.value)}
                 type="text"
                 {...params}
-                label="Hasta"
               />
             )}
           />
@@ -109,7 +125,7 @@ useEffect(() => {
               backgroundColor: 'var(--background-buttom',
             }}
           >
-            Request a quote
+            <Typography variant="button">Pedir Presupuesto</Typography>
           </Button>
         </div>
       </div>

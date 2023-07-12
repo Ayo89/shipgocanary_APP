@@ -1,12 +1,11 @@
 :root {
-  --background-color: #77D4FC;
-  --background-buttom: #0080FF;
+  --background-color: #77d4fc;
+  --background-buttom: #0080ff;
   font-size: 12px;
-
 }
 
-body, html {
-
+body,
+html {
   margin: 0;
   padding: 0;
   width: 100vw;
@@ -14,9 +13,10 @@ body, html {
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
+
 }
-#root{
+#root {
+  
   width: 100%;
   height: 100%;
 }
-

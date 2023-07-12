@@ -1,11 +1,17 @@
 .container{
+    box-sizing: border-box;
   width: 100%;
  height: 100%;
- background-color: antiquewhite;
  display: flex;
  flex-direction: column;
  align-items: center;
+ padding: 0 24px;
 }
-.content-budget-bar{
 
+#footer-body{
+
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 40%;
 }
