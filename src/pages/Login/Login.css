@@ -5,10 +5,11 @@
   background-attachment: fixed; /* Esto hace que la imagen de fondo se mantenga fija mientras se desplaza el contenido de la página */
   background-size: cover; /* Esto hace que la imagen cubra todo el contenedor */
   background-position: center 90%;
-  height: 100vh;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex: 1;
 }
 
 #card-login {

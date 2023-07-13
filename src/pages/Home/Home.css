@@ -1,17 +1,6 @@
-.container{
-    box-sizing: border-box;
-  width: 100%;
- height: 100%;
- display: flex;
- flex-direction: column;
- align-items: center;
- padding: 0 24px;
-}
-
-#footer-body{
-
+#footer-home {
   display: flex;
+  width: inherit;
   justify-content: space-between;
-  width: 100%;
-  height: 40%;
+  flex: 1;
 }

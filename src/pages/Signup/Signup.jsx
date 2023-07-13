@@ -25,6 +25,8 @@ const passRegex = /^(?=.*\d)(.{5,})\1$/
 function Signup() {
   const [isPassvisible, setIsPassVisible] = useState(false)
   const [name, setName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [repeatPassword, setRepeatPassword] = useState('')
@@ -50,6 +52,17 @@ function Signup() {
     const name = e.target.value
     setName(name)
   }
+
+    const validateLastName = (e) => {
+      const lastName = e.target.value
+      setLastName(lastName)
+    }
+
+
+       const validatePhone = (e) => {
+         const phone = e.target.value
+         setPhone(phone)
+       }
 
   const validatePassword = (e) => {
     const password = e.target.value
@@ -116,9 +129,9 @@ function Signup() {
     } else if (validPassword !== true) {
       alert('verify your password')
     } else {
-      await signup(name, email, password)
+      await signup(name,lastName,phone, email, password)
       if (!localStorage.getItem('token')) alert('Error')
-      else navigate('/invite')
+      else navigate('/home')
     }
   }
 
@@ -129,9 +142,24 @@ function Signup() {
           <Typography variant="h4">Signup</Typography>
           <CardContent id="content-input-signup">
             <TextField
+              value={name}
               id="input-signup"
               label="Name"
               onChange={validateName}
+              variant="filled"
+            />
+            <TextField
+              id="input-signup"
+              label="Last name"
+              value={lastName}
+              onChange={validateLastName}
+              variant="filled"
+            />
+            <TextField
+              id="input-signup"
+              label="phone"
+              value={phone}
+              onChange={validatePhone}
               variant="filled"
             />
             <TextField
@@ -178,15 +206,22 @@ function Signup() {
 
           <CardActions id="content-footer-signup">
             <Button id="signup-button" variant="contained" onClick={signUp}>
-              <Typography variant="button">Create Account</Typography>
+              <Typography color="#000" variant="button">
+                Create Account
+              </Typography>
             </Button>
           </CardActions>
           <div className="content-footer">
             <Typography variant="body1" className="forgot-password">
               Forgot password
             </Typography>
-            <Typography variant='body1'>
-              <Link to="/login">Login</Link>
+            <Typography className="button-scale" variant="body1">
+              <Link
+                style={{ textDecoration: 'none', color: '#000' }}
+                to="/login"
+              >
+                Login
+              </Link>
             </Typography>
           </div>
         </Card>

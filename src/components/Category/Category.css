@@ -1,0 +1,14 @@
+#container-category{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: aqua;
+  flex:1;
+}
+
+#container-category .item-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}

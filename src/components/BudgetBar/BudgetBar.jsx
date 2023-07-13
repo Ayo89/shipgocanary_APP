@@ -70,7 +70,7 @@ useEffect(() => {
 
   return (
     <div className="container-budget">
-      <div className="wrapper-budget">
+
         <SelectCategory />
         <div>
           <InputLabel id="label-budget" htmlFor="component-outlined">
@@ -121,14 +121,14 @@ useEffect(() => {
             className="budget-buttom"
             style={{
               color: '#000',
-              height: '4rem',
+              height: '4.4rem',
               backgroundColor: 'var(--background-buttom',
             }}
           >
             <Typography variant="button">Pedir Presupuesto</Typography>
           </Button>
+
         </div>
-      </div>
     </div>
   )
 }

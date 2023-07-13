@@ -3,20 +3,11 @@
   color: #000 ; 
   font-weight: 700 ;
 }
-#button:hover{
-  transform: scale(1.1);
-}
 
 .content-img{
   width: 9rem;
-  height: 7.11rem;
   flex-shrink: 0;
 }
 .img-logo {
   width: 9rem;
-  height: 7.11rem;
-}
-
-a{
-  text-transform: none;
 }

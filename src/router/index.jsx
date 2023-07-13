@@ -3,6 +3,7 @@ import Root from "../layout"
 import Home from "../pages/Home/Home"
 import Login from "../pages/Login/Login"
 import Signup from "../pages/Signup/Signup"
+import CreateShipment from "../pages/CreateShipment/CreateShipment"
 
 
 const router = createBrowserRouter([
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: 'signup',
         element: <Signup/>
+      },
+      {
+        path: 'create-shipment',
+        element: <CreateShipment />
       }
     ]
   }

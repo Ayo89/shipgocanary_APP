@@ -41,8 +41,7 @@ function Login() {
     const user = await getUserLogged()
     if (!localStorage.getItem('token'))
       return alert('Error: user or password wrong')
-    else if (user.communityId === null) navigate('/invite')
-    else navigate('/dashboard')
+    else navigate('/')
   }
 
   return (
@@ -65,7 +64,7 @@ function Login() {
               type={isPassVisible ? 'text' : 'password'}
               InputProps={{
                 endAdornment: (
-                  <div style={{ backgroundColor: 'white', height:'100%' }}>
+                  <div style={{ backgroundColor: 'white', height: '100%' }}>
                     <IconButton
                       style={{
                         backgroundColor: 'inherit',
@@ -92,8 +91,13 @@ function Login() {
             <Typography variant="body1" className="forgot-password">
               Forgot password
             </Typography>
-            <Typography variant='body1'>
-              <Link style={{textDecoration:'none', color:'#000'}} to="/signup">Sign up</Link>
+            <Typography className="button-scale" variant="body1">
+              <Link
+                style={{ textDecoration: 'none', color: '#000' }}
+                to="/signup"
+              >
+                Sign up
+              </Link>
             </Typography>
           </div>
         </Card>

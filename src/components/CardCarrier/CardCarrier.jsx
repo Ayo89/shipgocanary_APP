@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import furgon from '../../assets/furgon-foton-3tn-vista-frontal3.jpg'
 function CardCarrier() {
   return (
-    <div id="container-card">
+    <div id="container-card-carrier">
       <Card id="wrapper-card">
         <CardMedia
           id="header-card"
@@ -18,7 +18,7 @@ function CardCarrier() {
           image={furgon}
         />
         <CardContent id="body-card">
-          <Typography gutterBottom variant="h4">
+          <Typography gutterBottom variant="h5">
             Pedro
           </Typography>
           <Typography variant='body1'>Transportista Villanueva de Gállego(Zaragoza)</Typography>
