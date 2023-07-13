@@ -53,7 +53,7 @@ export default function CreateShipment() {
 
   return (
     <>
-      <Stepper id="wrapper-header-stepper" nonLinear activeStep={activeStep}>
+      <Stepper style={{width:'inherit'}} id="wrapper-header-stepper" nonLinear activeStep={activeStep}>
         {steps.map((label, index) => (
           <Step key={label} completed={completed[index]}>
             <StepButton color="inherit" onClick={handleStep(index)}>

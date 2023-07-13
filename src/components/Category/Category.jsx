@@ -10,12 +10,8 @@ import { Container } from '@mui/material'
 function Category() {
   return (
     <>
-      <Container
-        id="container-category"
-        maxWidth="100"
-        
-      >
-        <Grid container spacing={2}>
+
+        <Grid container>
           <Grid className="item-grid" item xs={12} sm={6} md={4} lg={3}>
             <CardCategory />
           </Grid>
@@ -28,7 +24,7 @@ function Category() {
           <Grid className="item-grid" item xs={12} sm={6} md={4} lg={3}>
             <CardCategory />
           </Grid>
-{/*           <Grid className="item-grid" item xs={12} sm={6} md={4} lg={3}>
+         <Grid className="item-grid" item xs={12} sm={6} md={4} lg={3}>
             <CardCategory />
           </Grid>
           <Grid className="item-grid" item xs={12} sm={6} md={4} lg={3}>
@@ -39,9 +35,8 @@ function Category() {
           </Grid>
           <Grid className="item-grid" item xs={12} sm={6} md={4} lg={3}>
             <CardCategory />
-          </Grid> */}
+          </Grid> 
         </Grid>
-      </Container>
     </>
   )
 }
