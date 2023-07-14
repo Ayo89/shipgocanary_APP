@@ -1,3 +1,5 @@
+import { api } from './api'
+
 export const getUserLogged = async () => {
   try {
     const { data } = await api.get('/users/profile', {

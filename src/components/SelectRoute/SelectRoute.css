@@ -1,0 +1,57 @@
+#container-route{
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: inherit;
+  justify-content: space-evenly;
+  flex: 1;
+
+}
+#wrapper-imput-route{
+  width: 600px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+#header-route{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  height: 49%;
+  width: 50%;
+  flex: 1;
+
+}
+#footer-route .css-1u3bzj6-MuiFormControl-root-MuiTextField-root{
+width: 100%;
+}
+#footer-route{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 50%;
+  height: 49%;
+  flex: 1;
+}
+
+#content-route-button{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#button-route{
+  width: 100%;
+  height: 28%;
+}
+
+#button-route:hover {
+  background-color: var(--background-color) !important;
+  transform: scale(1.1);
+}

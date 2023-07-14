@@ -7,35 +7,19 @@ import CardCategory from '../CardCategory/CardCategory'
 import './Category.css'
 import { Container } from '@mui/material'
 
-function Category() {
+function Category({step}) {
+  console.log(step)
   return (
     <>
-
-        <Grid container>
-          <Grid className="item-grid" item xs={12} sm={6} md={4} lg={3}>
-            <CardCategory />
-          </Grid>
-          <Grid className="item-grid" item xs={12} sm={6} md={4} lg={3}>
-            <CardCategory />
-          </Grid>
-          <Grid className="item-grid" item xs={12} sm={6} md={4} lg={3}>
-            <CardCategory />
-          </Grid>
-          <Grid className="item-grid" item xs={12} sm={6} md={4} lg={3}>
-            <CardCategory />
-          </Grid>
-         <Grid className="item-grid" item xs={12} sm={6} md={4} lg={3}>
-            <CardCategory />
-          </Grid>
-          <Grid className="item-grid" item xs={12} sm={6} md={4} lg={3}>
-            <CardCategory />
-          </Grid>
-          <Grid className="item-grid" item xs={12} sm={6} md={4} lg={3}>
-            <CardCategory />
-          </Grid>
-          <Grid className="item-grid" item xs={12} sm={6} md={4} lg={3}>
-            <CardCategory />
-          </Grid> 
+        <Grid container id='grid-container'>
+            <CardCategory step={step} />
+            <CardCategory step={step} />
+            <CardCategory step={step} />
+            <CardCategory step={step} />
+            <CardCategory step={step} />
+            <CardCategory step={step} />
+            <CardCategory step={step} />
+            <CardCategory step={step} />
         </Grid>
     </>
   )
