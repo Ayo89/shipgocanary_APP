@@ -28,23 +28,25 @@ function Root() {
   const getAutocomplete = async () => {
     const res = await getPlaces(desde)
     const data =
+      res &&
       res.predictions &&
       res.predictions.map((option) => {
         const descriptionWithoutCommas = option.description.replace(/,/g, '')
         return { label: descriptionWithoutCommas }
       })
-    setDirection(data)
+    setDirection(data && data)
   }
 
   const getAutocomplete2 = async () => {
     const res = await getPlaces(hasta)
     const data =
+      res &&
       res.predictions &&
       res.predictions.map((option) => {
         const descriptionWithoutCommas = option.description.replace(/,/g, '')
         return { label: descriptionWithoutCommas }
       })
-    setDirection2(data)
+    setDirection2(data && data)
   }
 
 
@@ -56,7 +58,6 @@ function Root() {
     direction,
     direction2,
     confirmDirections,
-    setConfirmDirections,
     setDirection,
     setDirection2,
     setDesde,

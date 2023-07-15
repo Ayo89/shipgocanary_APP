@@ -6,7 +6,7 @@ import { Autocomplete, Button, TextField, Typography } from '@mui/material'
 import { useContext } from 'react'
 import { ThemeContext } from '../Context/Theme'
 
-function BudgetBar({ onSelect }) {
+function BudgetBar( ) {
   const {
     desde,
     setDesde,
@@ -22,7 +22,6 @@ function BudgetBar({ onSelect }) {
     getAutocomplete2,
   } = useContext(ThemeContext)
 
-  console.log(onSelect)
   const lala = [
     { label: 'The Shawshank Redemption', year: 1994 },
     { label: 'The Godfather', year: 1972 },
