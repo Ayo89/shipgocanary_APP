@@ -12,7 +12,7 @@ function Category({step}) {
   return (
     <>
         <Grid container id='grid-container'>
-        <CardCategory onClick={step} /> 
+        <CardCategory  /> 
         </Grid>
     </>
   )

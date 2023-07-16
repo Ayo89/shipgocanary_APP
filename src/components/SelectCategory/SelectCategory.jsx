@@ -30,13 +30,12 @@ export default function SelectCategory() {
     setDirection2,
     getAutocomplete,
     getAutocomplete2,
-    categoriesService,
-    setCategoriesService
+    categories,
+    setCategoriesService,
   } = useContext(ThemeContext)
 
 const [category, setCategory] = useState('')
 
-console.log(categoriesService)
 const handleCategory = (e) => {
 setCategory(e.target.value)
 }
@@ -51,16 +50,11 @@ console.log(category)
       <Autocomplete
         className="imput-budget"
         id="imputs"
-        options={categoriesService}
+        options={categories}
         label="Name"
         onSelect={handleCategory}
         renderInput={(params) => (
-          <TextField
-            onChange={handleCategory}
-            type="text"
-            {...params}
-
-          />
+          <TextField onChange={handleCategory} type="text" {...params} />
         )}
       />
     </div>

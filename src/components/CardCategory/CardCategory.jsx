@@ -14,104 +14,66 @@ import mudanza from '../../assets/Mejores-furgonetas-para-hacer-mudanzas-1030x66
 import maquinaria from '../../assets/2791134.jpeg'
 import { ThemeContext } from '../Context/Theme'
 
-const categories = [
-  {
-    "name": "Mudanzas",
-    "img": mudanza
-  },
-  {
-    "name": "Coches",
-    "img": coche
-  },
-  {
-    "name": "Motos",
-    "img": moto
-  },
-  {
-    "name": "Mercancias",
-    "img": mercancia
-  },
-  {
-    "name": "Pallets",
-    "img": pallet
-  },
-  {
-    "name": "Mascotas",
-    "img": mascota
-  },
-  {
-    "name": "Envarcacion",
-    "img": barco
-  },
-  {
-    "name": "Maquinaria",
-    "img": maquinaria
-  },
-
-]
-
-
 
 
 function CardCategory({ step }) {
+    const [categoriesService, setCategoriesService] = useState([])
   const {
-    desde,
-    confirmDirections,
-    setConfirmDirections,
-    setDesde,
-    hasta,
-    setHasta,
-    handleDesde,
-    handleHasta,
-    direction,
-    direction2,
-    setDirection,
-    setDirection2,
-    getAutocomplete,
-    getAutocomplete2,
     //steps
-    steps,
-    activeStep,
-    completed,
-    completedSteps,
-    isLastStep,
-    totalSteps,
-    handleBack,
-    handleNext,
-    handleStep,
-    handleResumen,
-    allStepsCompleted
+    handleCategory,
+
   } = useContext(ThemeContext)
 
-  /* const [categories, setCategories] = useState([])
-  
-    const getAllcategories = async () => {
-      const res = await getCategories()
-      setCategories(res)
-    }  */
+const getAllCategories = async () => {
+    const res = await getCategories()
+    setCategoriesService(res)
+}
 
-  
-  /* 
-    useEffect(() => {
-      if(categories){
-        getAllcategories()
-      }
-    }, []) */
+useEffect(() => {
+getAllCategories()
+},[])
 
-    return (
-    categories.map((item, index) => (
-      <Grid key={index} className="item-grid" item xs={12} sm={6} md={4} lg={3}>
-        <Link id="card-category" onClick={handleNext}>
-          <Typography color={'var(--background-button)'} textAlign={'center'} variant='h6'>{item.name}</Typography>
-            <CardMedia
-              component="div"
-            style={{ height: '300px', flex:'1', width:'100%', objectFit: 'cover' }}
-              alt="green iguana"
-              image={item.img}
-            />
-      </Link>
+
+console.log(categoriesService)
+
+    return categoriesService && categoriesService.map((item) => (
+      <Grid
+        key={item._id}
+        className="item-grid"
+        item
+        xs={12}
+        sm={6}
+        md={4}
+        lg={3}
+      >
+        <Link
+          id="card-category"
+          onClick={(e) => handleCategory(item._id)}
+        >
+          <Typography
+    
+            color={'var(--background-button)'}
+            textAlign={'center'}
+            variant="h6"
+          >
+            {item.name}
+          </Typography>
+          <CardMedia
+
+            component="div"
+            style={{
+              height: '300px',
+              flex: '1',
+              width: '100%',
+              objectFit: 'cover',
+              border: '1px solid var(--background-color)',
+            }}
+            alt="green iguana"
+            image={item.img}
+          />
+        </Link>
       </Grid>
-    )))
+    ))
 }
 
 export default CardCategory

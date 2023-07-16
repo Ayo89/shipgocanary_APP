@@ -46,70 +46,12 @@ export default function CreateShipment() {
 
   const selectedStep = () => {
     if (activeStep === 0) {
-      return <Category step={handleNext} />
+      return <Category/>
 
     } else if (activeStep === 1) {
       return <SelectRoute step={handleResumen} />
     }
   }
- /*  const [activeStep, setActiveStep] = React.useState(0)
-  const [completed, setCompleted] = React.useState({})
-
-  const totalSteps = () => {
-    return steps.length
-  }
-
-  const completedSteps = () => {
-    return Object.keys(completed).length
-  }
-
-  const isLastStep = () => {
-    return activeStep === totalSteps() - 1
-  }
-
-  const allStepsCompleted = () => {
-    return completedSteps() === totalSteps()
-  }
-
-
-
-    const handleResumen = () => {
-      setConfirmDirections(true)
-      const newActiveStep =
-        isLastStep() && !allStepsCompleted()
-          ? // It's the last step, but not all steps have been completed,
-            // find the first step that has been completed
-            steps.findIndex((step, i) => !(i in completed))
-          : activeStep + 1
-      setActiveStep(newActiveStep)
-    }
-
-  const handleNext = () => {
-    const newActiveStep =
-      isLastStep() && !allStepsCompleted()
-        ? // It's the last step, but not all steps have been completed,
-          // find the first step that has been completed
-          steps.findIndex((step, i) => !(i in completed))
-        : activeStep + 1
-    setActiveStep(newActiveStep)
-  }
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1)
-  }
-
-  const handleStep = (step) => () => {
-    setActiveStep(step)
-  }
-
-  const selectedStep = () => {
-    if(activeStep === 0){
-      return <Category step={handleNext} />
-
-    } else if(activeStep === 1){
-      return <SelectRoute step={handleResumen} />
-    }
-  } */
 
   return (
     <>

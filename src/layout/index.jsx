@@ -10,7 +10,8 @@ import { ThemeContext } from '../components/Context/Theme'
 import { getPlaces } from '../../services/google.service'
 import SelectRoute from "../components/SelectRoute/SelectRoute"
 import Category from "../components/Category/Category"
-import { getCategories } from "../../services/category.service"
+import { getCategories, updateShipmentCategory } from "../../services/category.service"
+import { createShipmentService } from "../../services/shipment.service"
 
 const steps = ['Escoge una categoría', 'Escoge una ruta', 'Detalla tu pedido', 'Resumen']
 
@@ -21,11 +22,12 @@ function Root() {
   const [desde, setDesde] = useState('')
   const [hasta, setHasta] = useState('')
   const [confirmDirections, setConfirmDirections] = useState(false)
+  const [shipment, setShipment] = useState({})
 
   const [direction, setDirection] = useState('')
   const [direction2, setDirection2] = useState('')
+const [categories, setCategories] = useState([])
 
-  const [categoriesService, setCategoriesService] = useState([])
 
   //This is steps for the create Shipment
   const totalSteps = () => {
@@ -43,15 +45,7 @@ function Root() {
     setActiveStep(newActiveStep)
   }
 
-  const handleCategory = () => {
-    const newActiveStep =
-      isLastStep() && !allStepsCompleted()
-        ? // It's the last step, but not all steps have been completed,
-        // find the first step that has been completed
-        steps.findIndex((step, i) => !(i in completed))
-        : activeStep + 1
-    setActiveStep(newActiveStep)
-  }
+ 
 
 
   const handleNext = () => {
@@ -118,18 +112,43 @@ function Root() {
 const getAllCategories = async () => {
   const res = await getCategories()
   const data =
-    res &&
-    res.map((option) => {
-      return { label: option.name }
-    })
-  setCategoriesService(data)
+  res &&
+  res.map((option) => {
+    return { label: option.name }
+  })
+  setCategories(data)
 }
 
 useEffect(() => {
   getAllCategories()
 },[])
 
-console.log(categoriesService)
+const addCategoryToShipment = async (category_id) => {
+  const {data} = await updateShipmentCategory(category_id)
+  return data
+}
+
+
+
+//SHIPMENTS
+const createShipment = async () => {
+  const  res  = 
+  setShipment(res)
+}
+
+ const handleCategory = async (category_id) => {
+    await createShipmentService(category_id)
+   const newActiveStep =
+     isLastStep() && !allStepsCompleted()
+       ? // It's the last step, but not all steps have been completed,
+         // find the first step that has been completed
+         steps.findIndex((step, i) => !(i in completed))
+       : activeStep + 1
+   setActiveStep(newActiveStep)
+ }
+
+
+
 
   const theme = {
     desde,
@@ -146,6 +165,7 @@ console.log(categoriesService)
     setConfirmDirections,
     getAutocomplete,
     getAutocomplete2,
+    handleCategory,
     //themas steps
     steps,
     activeStep,
@@ -159,8 +179,7 @@ console.log(categoriesService)
     handleResumen,
     allStepsCompleted,
     //categories
-    categoriesService,
-    setCategoriesService
+    categories,
   }
 
   const navigate = useNavigate()

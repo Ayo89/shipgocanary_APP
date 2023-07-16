@@ -1,0 +1,50 @@
+[
+  {
+    "_id": "64b4407a4a62d8cdf1da46fe",
+    "name": "Maquinaria",
+    "img": "https://i.postimg.cc/dVjVfR13/2791134.jpg",
+    "__v": 0
+  },
+  {
+    "_id": "64b440944a62d8cdf1da4701",
+    "name": "Coches",
+    "img": "https://i.postimg.cc/5Nc9NKQj/El-coche-como-lienzo-31-Custom-Chevrolet.jpg",
+    "__v": 0
+  },
+  {
+    "_id": "64b440af4a62d8cdf1da4704",
+    "name": "Envarcaciones",
+    "img": "https://i.postimg.cc/DzznYtHp/istockphoto-507037484-612x612.jpg",
+    "__v": 0
+  },
+  {
+    "_id": "64b440c44a62d8cdf1da4707",
+    "name": "Motos",
+    "img": "https://i.postimg.cc/mZ9Rq3p4/nmoto-golden-age-concept.jpg",
+    "__v": 0
+  },
+  {
+    "_id": "64b440e14a62d8cdf1da470a",
+    "name": "Mudanzas",
+    "img": "https://i.postimg.cc/rFCTyVLY/Mejores-furgonetas-para-hacer-mudanzas-1.jpg",
+    "__v": 0
+  },
+  {
+    "_id": "64b440fb4a62d8cdf1da470d",
+    "name": "Pallets",
+    "img": "https://i.postimg.cc/W4xC6Cvk/istockphoto-617603758-612x612.jpg",
+    "__v": 0
+  },
+  {
+    "_id": "64b441174a62d8cdf1da4710",
+    "name": "Mascotas",
+    "img": "https://i.postimg.cc/RhBY2tqC/segurmania-mascotas-destacada.jpg",
+    "__v": 0
+  },
+  {
+    "_id": "64b441324a62d8cdf1da4713",
+    "name": "Mercancia",
+    "img": "https://i.postimg.cc/t4Tc0pR6/download.jpg",
+    "__v": 0
+  }
+]
