@@ -6,20 +6,13 @@ import Box from '@mui/material/Box'
 import CardCategory from '../CardCategory/CardCategory'
 import './Category.css'
 import { Container } from '@mui/material'
+import { Link } from 'react-router-dom'
 
 function Category({step}) {
-  console.log(step)
   return (
     <>
         <Grid container id='grid-container'>
-            <CardCategory step={step} />
-            <CardCategory step={step} />
-            <CardCategory step={step} />
-            <CardCategory step={step} />
-            <CardCategory step={step} />
-            <CardCategory step={step} />
-            <CardCategory step={step} />
-            <CardCategory step={step} />
+        <CardCategory onClick={step} /> 
         </Grid>
     </>
   )

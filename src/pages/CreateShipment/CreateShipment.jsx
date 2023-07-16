@@ -1,5 +1,5 @@
 import './CreateShipment.css'
-import * as React from 'react'
+
 import Box from '@mui/material/Box'
 import Stepper from '@mui/material/Stepper'
 import Step from '@mui/material/Step'
@@ -10,8 +10,8 @@ import CardCategory from '../../components/CardCategory/CardCategory'
 import Category from '../../components/Category/Category'
 import SelectRoute from '../../components/SelectRoute/SelectRoute'
 import { ThemeContext } from '../../components/Context/Theme'
+import { useContext } from 'react'
 
-const steps = ['Escoge una categoría', 'Escoge una ruta', 'Detalla tu pedido', 'Resumen']
 
 export default function CreateShipment() {
   const {
@@ -29,8 +29,30 @@ export default function CreateShipment() {
     setDirection2,
     getAutocomplete,
     getAutocomplete2,
-  } = React.useContext(ThemeContext)
-  const [activeStep, setActiveStep] = React.useState(0)
+    //steps
+    steps,
+    activeStep,
+    completed,
+    completedSteps,
+    isLastStep,
+    totalSteps,
+    handleBack,
+    handleNext,
+    handleStep,
+    handleResumen,
+    allStepsCompleted
+  } = useContext(ThemeContext)
+
+
+  const selectedStep = () => {
+    if (activeStep === 0) {
+      return <Category step={handleNext} />
+
+    } else if (activeStep === 1) {
+      return <SelectRoute step={handleResumen} />
+    }
+  }
+ /*  const [activeStep, setActiveStep] = React.useState(0)
   const [completed, setCompleted] = React.useState({})
 
   const totalSteps = () => {
@@ -87,9 +109,7 @@ export default function CreateShipment() {
     } else if(activeStep === 1){
       return <SelectRoute step={handleResumen} />
     }
-  }
-
-
+  } */
 
   return (
     <>

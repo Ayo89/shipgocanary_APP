@@ -8,7 +8,16 @@ import './index.css'
 import '../components/HeaderLogged/HeaderLogged.css'
 import { ThemeContext } from '../components/Context/Theme'
 import { getPlaces } from '../../services/google.service'
+import SelectRoute from "../components/SelectRoute/SelectRoute"
+import Category from "../components/Category/Category"
+import { getCategories } from "../../services/category.service"
+
+const steps = ['Escoge una categoría', 'Escoge una ruta', 'Detalla tu pedido', 'Resumen']
+
+
 function Root() {
+  const [activeStep, setActiveStep] = useState(0)
+  const [completed, setCompleted] = useState({})
   const [desde, setDesde] = useState('')
   const [hasta, setHasta] = useState('')
   const [confirmDirections, setConfirmDirections] = useState(false)
@@ -16,8 +25,64 @@ function Root() {
   const [direction, setDirection] = useState('')
   const [direction2, setDirection2] = useState('')
 
+  const [categoriesService, setCategoriesService] = useState([])
+
+  //This is steps for the create Shipment
+  const totalSteps = () => {
+    return steps.length
+  }
+
+  const handleResumen = () => {
+    setConfirmDirections(true)
+    const newActiveStep =
+      isLastStep() && !allStepsCompleted()
+        ? // It's the last step, but not all steps have been completed,
+        // find the first step that has been completed
+        steps.findIndex((step, i) => !(i in completed))
+        : activeStep + 1
+    setActiveStep(newActiveStep)
+  }
+
+  const handleCategory = () => {
+    const newActiveStep =
+      isLastStep() && !allStepsCompleted()
+        ? // It's the last step, but not all steps have been completed,
+        // find the first step that has been completed
+        steps.findIndex((step, i) => !(i in completed))
+        : activeStep + 1
+    setActiveStep(newActiveStep)
+  }
+
+
+  const handleNext = () => {
+    const newActiveStep =
+      isLastStep() && !allStepsCompleted()
+        ? // It's the last step, but not all steps have been completed,
+        // find the first step that has been completed
+        steps.findIndex((step, i) => !(i in completed))
+        : activeStep + 1
+    setActiveStep(newActiveStep)
+  }
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1)
+  }
+
+  const handleStep = (step) => () => {
+    setActiveStep(step)
+  }
+  const completedSteps = () => {
+    return Object.keys(completed).length
+  }
+  const isLastStep = () => {
+    return activeStep === totalSteps() - 1
+  }
+  const allStepsCompleted = () => {
+    return completedSteps() === totalSteps()
+  }
+  
+//This is the autocomplate and directions
   const handleDesde = (event, value) => {
-    event.prevent
     if (value) setDesde(value.label)
   }
 
@@ -48,9 +113,23 @@ function Root() {
       })
     setDirection2(data && data)
   }
+//Categories
 
+const getAllCategories = async () => {
+  const res = await getCategories()
+  const data =
+    res &&
+    res.map((option) => {
+      return { label: option.name }
+    })
+  setCategoriesService(data)
+}
 
+useEffect(() => {
+  getAllCategories()
+},[])
 
+console.log(categoriesService)
 
   const theme = {
     desde,
@@ -67,6 +146,21 @@ function Root() {
     setConfirmDirections,
     getAutocomplete,
     getAutocomplete2,
+    //themas steps
+    steps,
+    activeStep,
+    completed,
+    completedSteps,
+    isLastStep,
+    totalSteps,
+    handleBack,
+    handleNext,
+    handleStep,
+    handleResumen,
+    allStepsCompleted,
+    //categories
+    categoriesService,
+    setCategoriesService
   }
 
   const navigate = useNavigate()

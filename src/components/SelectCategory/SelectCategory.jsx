@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import InputLabel from '@mui/material/InputLabel'
 import './SelectCategory.css'
 import { Autocomplete, TextField, Typography } from '@mui/material'
+import { ThemeContext } from '../Context/Theme'
 
 const lala = [
   { label: 'The Shawshank Redemption', year: 1994 },
@@ -16,14 +17,31 @@ const lala = [
 
 
 export default function SelectCategory() {
-const [category, setCategory] = useState()
+  const {
+    desde,
+    setDesde,
+    hasta,
+    setHasta,
+    handleDesde,
+    handleHasta,
+    direction,
+    direction2,
+    setDirection,
+    setDirection2,
+    getAutocomplete,
+    getAutocomplete2,
+    categoriesService,
+    setCategoriesService
+  } = useContext(ThemeContext)
 
+const [category, setCategory] = useState('')
 
+console.log(categoriesService)
 const handleCategory = (e) => {
 setCategory(e.target.value)
 }
 
-
+console.log(category)
   
   return (
     <div id="content-imput">
@@ -33,12 +51,11 @@ setCategory(e.target.value)
       <Autocomplete
         className="imput-budget"
         id="imputs"
-        options={lala}
+        options={categoriesService}
         label="Name"
-        onChange={handleCategory}
+        onSelect={handleCategory}
         renderInput={(params) => (
           <TextField
-            value={category}
             onChange={handleCategory}
             type="text"
             {...params}
