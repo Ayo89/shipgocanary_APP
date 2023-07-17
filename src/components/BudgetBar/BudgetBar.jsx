@@ -20,6 +20,7 @@ function BudgetBar( ) {
     setDirection2,
     getAutocomplete,
     getAutocomplete2,
+    handleCreateShipmentStep,
   } = useContext(ThemeContext)
 
   const lala = [
@@ -49,9 +50,10 @@ function BudgetBar( ) {
           <Typography variant="body1">¿Desde?</Typography>
         </InputLabel>
         <Autocomplete
-          isOptionEqualToValue={(option, value) => option.label === value.label}
+          isOptionEqualToValue={(option, value) => option.label !== value.label}
           className="imput-budget"
           id="imputs"
+          value={desde ? desde : ''}
           options={direction ? direction : [{ label: 'not options' }]}
           label="Name"
           renderInput={(params) => (
@@ -68,9 +70,10 @@ function BudgetBar( ) {
           <Typography variant="body1">¿Hasta?</Typography>
         </InputLabel>
         <Autocomplete
-          isOptionEqualToValue={(option, value) => option.label === value.label}
+          isOptionEqualToValue={(option, value) => option.label !== value.label}
           className="imput-budget"
           id="imputs"
+          value={hasta ? hasta : ''}
           options={direction2 ? direction2 : [{ label: 'not options' }]}
           label="Name"
           renderInput={(params) => (
@@ -90,6 +93,7 @@ function BudgetBar( ) {
             height: '4.4rem',
             backgroundColor: 'var(--background-buttom',
           }}
+          onClick={handleCreateShipmentStep}
         >
           <Typography variant="button">Pedir Presupuesto</Typography>
         </Button>

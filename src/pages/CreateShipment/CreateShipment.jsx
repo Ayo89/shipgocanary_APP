@@ -11,6 +11,8 @@ import Category from '../../components/Category/Category'
 import SelectRoute from '../../components/SelectRoute/SelectRoute'
 import { ThemeContext } from '../../components/Context/Theme'
 import { useContext } from 'react'
+import DetailOrder from '../../components/DetailOrder/DetailOrder'
+import Resumen from '../../components/Resumen/Resumen'
 
 
 export default function CreateShipment() {
@@ -40,7 +42,8 @@ export default function CreateShipment() {
     handleNext,
     handleStep,
     handleResumen,
-    allStepsCompleted
+    allStepsCompleted,
+    handleDetails,
   } = useContext(ThemeContext)
 
 
@@ -49,7 +52,13 @@ export default function CreateShipment() {
       return <Category/>
 
     } else if (activeStep === 1) {
-      return <SelectRoute step={handleResumen} />
+      return <SelectRoute step={handleDetails} />
+    }
+    else if(activeStep === 2) {
+      return <DetailOrder/>
+    }
+    else if(activeStep === 3) {
+     return <Resumen/>
     }
   }
 

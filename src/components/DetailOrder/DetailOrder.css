@@ -1,0 +1,26 @@
+#container-details{
+  width: inherit;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#wrapper-details{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70rem;
+  background-color: var(--background-color);
+  border-radius: 4px;
+padding: 24px;
+}
+.label-details{
+  font-size: 1.8rem !important;
+
+}
+#container-details .grid-details{
+  padding: 24px;
+}
+#container-details #grid-price{
+  padding: 14px !important;
+}

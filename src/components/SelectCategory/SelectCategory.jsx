@@ -31,14 +31,14 @@ export default function SelectCategory() {
     getAutocomplete,
     getAutocomplete2,
     categories,
+    category,
+    handleCategory,
     setCategoriesService,
   } = useContext(ThemeContext)
 
-const [category, setCategory] = useState('')
 
-const handleCategory = (e) => {
-setCategory(e.target.value)
-}
+
+
 
 console.log(category)
   

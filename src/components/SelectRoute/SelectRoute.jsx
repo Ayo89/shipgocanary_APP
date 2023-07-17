@@ -21,7 +21,7 @@ const API_KEY = 'AIzaSyBfQB6JYLKVUG80JLz26cZCzTkN-PKHF-Y'
 
 const containerStyle = {
   height: '600px',
-  flex:'1'
+  flex: '1',
 }
 
 const defaultCenter = {
@@ -31,7 +31,7 @@ const defaultCenter = {
 
 const libraries = ['places']
 
-function SelectRoute({step}) {
+function SelectRoute({ step }) {
   const {
     desde,
     confirmDirections,
@@ -47,28 +47,27 @@ function SelectRoute({step}) {
     setDirection2,
     getAutocomplete,
     getAutocomplete2,
+    //steps
+    handleDetails,
+    //category
+    categoryId,
+    //dates
+    sendDate,
+    receiveDate,
+    handleSendDate,
+    handleReceiveDate,
+    directions,
+    distance,
+    getDirections,
+    getDistance,
+    map,
+    setMap,
   } = useContext(ThemeContext)
-  const [map, setMap] = useState(null)
-  const [directions, setDirections] = useState(null)
-  const [distance, setDistance] = useState('')
+ 
 
-  const getDirections = (res) => {
-    if (res && res.status === 'OK') {
-      setDirections(res)
-      setConfirmDirections(false)
-    }
-  }
-  const getDistance = () => {
-    if(directions ){
-     setDistance(directions.routes[0].legs[0].distance.text)
-     
-    }
-  }
-
-
-useEffect(() => {
- getDistance()
-},[directions])
+  useEffect(() => {
+    getDistance()
+  }, [directions])
 
   useEffect(() => {
     getAutocomplete2()
@@ -77,7 +76,7 @@ useEffect(() => {
   useEffect(() => {
     getAutocomplete()
   }, [desde])
-      console.log(distance)
+
   return (
     <>
       <Box id="container-route">
@@ -91,14 +90,16 @@ useEffect(() => {
               </InputLabel>
               <Autocomplete
                 isOptionEqualToValue={(option, value) =>
-                  option.label === value.label
+                  option.label !== value.label
                 }
                 className="imput-budget"
                 id="imputs"
-                options={direction ? direction : [{ label: 'not options' }]}
+                value={desde ? desde : ''}
+                options={direction ? direction : [{ label: 'Not option' }]}
                 label="Name"
                 renderInput={(params) => (
                   <TextField
+                    value={desde}
                     onSelect={(e) => setDesde(e.target.value)}
                     type="text"
                     {...params}
@@ -114,14 +115,20 @@ useEffect(() => {
               </InputLabel>
               <Autocomplete
                 isOptionEqualToValue={(option, value) =>
-                  option.label === value.label
+                  option.label !== value.label
                 }
                 className="imput-budget"
                 id="imputs"
-                options={direction2 ? direction2 : [{ label: 'not options' }]}
+                value={hasta ? hasta : ''}
+                options={
+                  direction2
+                    ? direction2
+                    : [{ label: 'Introduce una dirección' }]
+                }
                 label="Name"
                 renderInput={(params) => (
                   <TextField
+                    value={hasta}
                     onSelect={(e) => setHasta(e.target.value)}
                     type="text"
                     {...params}
@@ -136,6 +143,10 @@ useEffect(() => {
               gap={1}
             >
               <Button
+                style={{
+                  backgroundColor:
+                    'var(--background-color)',
+                }}
                 variant="contained"
                 onClick={(e) => setConfirmDirections(true)}
               >
@@ -163,7 +174,12 @@ useEffect(() => {
                   Fecha de recogida
                 </Typography>
               </InputLabel>
-              <TextField type="date" />
+              <TextField
+                value={sendDate ? sendDate : ''}
+                onChange={handleSendDate}
+                onFocus={handleSendDate}
+                type="date"
+              />
             </Box>
             <Box>
               <InputLabel id="label-budget" htmlFor="component-outlined">
@@ -171,12 +187,21 @@ useEffect(() => {
                   Fecha de entrega
                 </Typography>
               </InputLabel>
-              <TextField type="date" />
+              <TextField
+                value={receiveDate ? receiveDate : ''}
+                onChange={handleReceiveDate}
+                onFocus={handleReceiveDate}
+                type="date"
+              />
             </Box>
             <Box id="content-route-button">
-              <Button id="button-route" variant="contained" onClick={step}>
+              <Button
+                id="button-route"
+                variant="contained"
+                onClick={handleDetails}
+              >
                 <Typography variant="button" color={'#000'} fontWeight={700}>
-                  Ir a resumen
+                  Ir a detalles
                 </Typography>
               </Button>
             </Box>

@@ -20,7 +20,7 @@ function CardCategory({ step }) {
     const [categoriesService, setCategoriesService] = useState([])
   const {
     //steps
-    handleCategory,
+    handleCategoryStep,
 
   } = useContext(ThemeContext)
 
@@ -48,7 +48,7 @@ console.log(categoriesService)
       >
         <Link
           id="card-category"
-          onClick={(e) => handleCategory(item._id)}
+          onClick={(e) => handleCategoryStep(item._id)}
         >
           <Typography
     

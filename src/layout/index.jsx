@@ -1,59 +1,127 @@
-import { Outlet, useNavigate } from "react-router-dom"
-import Header from "../components/Header/Header"
-import { getUserLogged } from "../../services/user.service"
-import HeaderLogged from "../components/HeaderLogged/HeaderLogged"
-import { useEffect, useState } from "react"
-import {  Box, Container } from "@mui/material"
+import { useNavigate, Outlet } from 'react-router-dom'
+import Header from '../components/Header/Header'
+import { getUserLogged } from '../../services/user.service'
+import HeaderLogged from '../components/HeaderLogged/HeaderLogged'
+import { useEffect, useState } from 'react'
+import { Box, Container } from '@mui/material'
 import './index.css'
 import '../components/HeaderLogged/HeaderLogged.css'
 import { ThemeContext } from '../components/Context/Theme'
 import { getPlaces } from '../../services/google.service'
-import SelectRoute from "../components/SelectRoute/SelectRoute"
-import Category from "../components/Category/Category"
-import { getCategories, updateShipmentCategory } from "../../services/category.service"
-import { createShipmentService } from "../../services/shipment.service"
+import SelectRoute from '../components/SelectRoute/SelectRoute'
+import Category from '../components/Category/Category'
+import {
+  getCategories,
+  updateShipmentCategory,
+} from '../../services/category.service'
+import { createShipmentService } from '../../services/shipment.service'
 
-const steps = ['Escoge una categoría', 'Escoge una ruta', 'Detalla tu pedido', 'Resumen']
-
+const steps = [
+  'Escoge una categoría',
+  'Escoge una ruta',
+  'Detalla tu pedido',
+  'Resumen',
+]
 
 function Root() {
+  const [directions, setDirections] = useState(null)
+  const [distance, setDistance] = useState('')
+  const [map, setMap] = useState(null)
+
   const [activeStep, setActiveStep] = useState(0)
   const [completed, setCompleted] = useState({})
   const [desde, setDesde] = useState('')
   const [hasta, setHasta] = useState('')
   const [confirmDirections, setConfirmDirections] = useState(false)
   const [shipment, setShipment] = useState({})
+  const [category, setCategory] = useState('')
+  const [categoryId, setCategoryId] = useState('')
 
   const [direction, setDirection] = useState('')
   const [direction2, setDirection2] = useState('')
-const [categories, setCategories] = useState([])
+  const [categories, setCategories] = useState([])
 
+  const [sendDate, setSendDate] = useState('')
+  const [receiveDate, setReceiveDate] = useState('')
+
+  const [title, setTitle] = useState('')
+  const [quantity, setQuantity] = useState('')
+  const [services, setServices] = useState('')
+  const [imgShipment, setImgShipment] = useState('')
+  const [description, setDescription] = useState('')
+  const [price, setPrice] = useState('')
+
+  const navigate = useNavigate()
+  //Map
+
+  const getDirections = (res) => {
+    if (res && res.status === 'OK') {
+      setDirections(res)
+      setConfirmDirections(false)
+    }
+  }
+  const getDistance = () => {
+    if (directions) {
+      setDistance(directions.routes[0].legs[0].distance.text)
+    }
+  }
+
+  //Details
+
+  const handleTitle = (e) => {
+    setTitle(e.target.value)
+  }
+
+  const handleQuantity = (e) => {
+    setQuantity(e.target.value)
+  }
+
+  const handleService = (e) => {
+    setServices(e.target.value)
+  }
+
+  const handleImgShipment = (e) => {
+    setImgShipment(e.target.value)
+  }
+
+  const handleDescription = (e) => {
+    setDescription(e.target.value)
+  }
+
+  const handlePrice = (e) => {
+    setPrice(e.target.value)
+  }
+
+  //dates
+
+  const handleSendDate = (e) => {
+    setSendDate(e.target.value)
+  }
+  const handleReceiveDate = (e) => {
+    setReceiveDate(e.target.value)
+  }
 
   //This is steps for the create Shipment
   const totalSteps = () => {
     return steps.length
   }
 
-  const handleResumen = () => {
-    setConfirmDirections(true)
+  const handleDetails = () => {
     const newActiveStep =
       isLastStep() && !allStepsCompleted()
         ? // It's the last step, but not all steps have been completed,
-        // find the first step that has been completed
-        steps.findIndex((step, i) => !(i in completed))
+          // find the first step that has been completed
+          steps.findIndex((step, i) => !(i in completed))
         : activeStep + 1
     setActiveStep(newActiveStep)
   }
-
- 
-
 
   const handleNext = () => {
     const newActiveStep =
       isLastStep() && !allStepsCompleted()
         ? // It's the last step, but not all steps have been completed,
-        // find the first step that has been completed
-        steps.findIndex((step, i) => !(i in completed))
+          // find the first step that has been completed
+          steps.findIndex((step, i) => !(i in completed))
         : activeStep + 1
     setActiveStep(newActiveStep)
   }
@@ -74,8 +142,8 @@ const [categories, setCategories] = useState([])
   const allStepsCompleted = () => {
     return completedSteps() === totalSteps()
   }
-  
-//This is the autocomplate and directions
+
+  //This is the autocomplate and directions
   const handleDesde = (event, value) => {
     if (value) setDesde(value.label)
   }
@@ -107,48 +175,86 @@ const [categories, setCategories] = useState([])
       })
     setDirection2(data && data)
   }
-//Categories
+  //Categories
 
-const getAllCategories = async () => {
-  const res = await getCategories()
-  const data =
-  res &&
-  res.map((option) => {
-    return { label: option.name }
-  })
-  setCategories(data)
-}
+  const handleCategory = (e) => {
+    setCategory(e.target.value)
+  }
 
-useEffect(() => {
-  getAllCategories()
-},[])
+  const getAllCategories = async () => {
+    const res = await getCategories()
+    const data =
+      res &&
+      res.map((option) => {
+        return { label: option.name }
+      })
+    setCategories(data)
+  }
 
-const addCategoryToShipment = async (category_id) => {
-  const {data} = await updateShipmentCategory(category_id)
-  return data
-}
+  useEffect(() => {
+    getAllCategories()
+  }, [])
 
+  const addCategoryToShipment = async (category_id) => {
+    const { data } = await updateShipmentCategory(category_id)
+    return data
+  }
 
+  //SHIPMENTS
+  const createShipment = async () => {
+    const res = await createShipmentService(
+      categoryId,
+      desde,
+      hasta,
+      sendDate,
+      receiveDate,
+      title,
+      quantity,
+      services,
+      imgShipment,
+      description,
+      price
+    )
+    setShipment(res)
+    setDesde('')
+    setHasta('')
+    navigate('/')
+  }
+  const handleResumen = () => {
+    const newActiveStep =
+      isLastStep() && !allStepsCompleted()
+        ? // It's the last step, but not all steps have been completed,
+          // find the first step that has been completed
+          steps.findIndex((step, i) => !(i in completed))
+        : activeStep + 1
+    setActiveStep(newActiveStep)
+  }
 
-//SHIPMENTS
-const createShipment = async () => {
-  const  res  = 
-  setShipment(res)
-}
+  console.log(category)
 
- const handleCategory = async (category_id) => {
-    await createShipmentService(category_id)
-   const newActiveStep =
-     isLastStep() && !allStepsCompleted()
-       ? // It's the last step, but not all steps have been completed,
-         // find the first step that has been completed
-         steps.findIndex((step, i) => !(i in completed))
-       : activeStep + 1
-   setActiveStep(newActiveStep)
- }
+  const handleCreateShipmentStep = () => {
+    if (category === '') {
+      setActiveStep(0)
+      navigate('/create-shipment')
+    } else {
+      setActiveStep(1)
+      navigate('/create-shipment')
+    }
+  }
+  const handleCategoryStep = async (category_id) => {
+    setCategoryId(category_id)
+    const newActiveStep =
+      isLastStep() && !allStepsCompleted()
+        ? // It's the last step, but not all steps have been completed,
+          // find the first step that has been completed
+          steps.findIndex((step, i) => !(i in completed))
+        : activeStep + 1
+    setActiveStep(newActiveStep)
+  }
 
-
-
+  /*   console.log(categoryId)
+  console.log(sendDate)
+  console.log(receiveDate) */
 
   const theme = {
     desde,
@@ -165,7 +271,7 @@ const createShipment = async () => {
     setConfirmDirections,
     getAutocomplete,
     getAutocomplete2,
-    handleCategory,
+    handleCategoryStep,
     //themas steps
     steps,
     activeStep,
@@ -178,11 +284,41 @@ const createShipment = async () => {
     handleStep,
     handleResumen,
     allStepsCompleted,
+    handleCreateShipmentStep,
     //categories
+    categoryId,
     categories,
+    category,
+    handleCategory,
+    //dates
+    sendDate,
+    receiveDate,
+    handleSendDate,
+    handleReceiveDate,
+    //details
+    title,
+    quantity,
+    services,
+    imgShipment,
+    description,
+    price,
+    handlePrice,
+    handleTitle,
+    handleQuantity,
+    handleService,
+    handleImgShipment,
+    handleDescription,
+    handleDetails,
+    //map
+    directions,
+    distance,
+    getDirections,
+    getDistance,
+    map,
+    setMap,
+    //shipmets
+    createShipment,
   }
-
-  const navigate = useNavigate()
 
   const changeHeader = () => {
     if (!localStorage.getItem('token')) return <Header />
