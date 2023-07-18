@@ -13,6 +13,7 @@ import { ThemeContext } from '../../components/Context/Theme'
 import { useContext } from 'react'
 import DetailOrder from '../../components/DetailOrder/DetailOrder'
 import Resumen from '../../components/Resumen/Resumen'
+import { Grid } from '@mui/material'
 
 
 export default function CreateShipment() {
@@ -63,9 +64,9 @@ export default function CreateShipment() {
   }
 
   return (
+    
     <>
       <Stepper
-        style={{ width: 'inherit' }}
         id="wrapper-header-stepper"
         nonLinear
         activeStep={activeStep}
@@ -80,7 +81,6 @@ export default function CreateShipment() {
       </Stepper>
 
       {selectedStep()}
-     
     </>
   )
 }

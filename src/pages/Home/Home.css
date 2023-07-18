@@ -1,6 +1,8 @@
 #footer-home {
   display: flex;
-  width: inherit;
-  justify-content: space-between;
+  width: 100%;
+  justify-content: space-evenly;
   flex: 1;
+  padding: 0 48px;
+  padding-bottom: 24px;
 }

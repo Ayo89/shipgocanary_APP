@@ -3,7 +3,7 @@ import Header from '../components/Header/Header'
 import { getUserLogged } from '../../services/user.service'
 import HeaderLogged from '../components/HeaderLogged/HeaderLogged'
 import { useEffect, useState } from 'react'
-import { Box, Container, Typography } from '@mui/material'
+import { Box, Container, Grid, Typography } from '@mui/material'
 import './index.css'
 import '../components/HeaderLogged/HeaderLogged.css'
 import { ThemeContext } from '../components/Context/Theme'
@@ -360,9 +360,10 @@ function Root() {
       <ThemeContext.Provider value={theme}>
         <Box maxWidth="100" id="container-root">
           {changeHeader()}
-          <Container id="container-body-layout" maxWidth="100">
+
+          <Grid id="container-body-layout" maxWidth="100">
             <Outlet />
-          </Container>
+          </Grid>
           <Box id="footerito">
             {' '}
             <Typography>

@@ -1,8 +1,6 @@
 #container-card-carrier {
   padding: 2em;
   background-color: var(--background-color);
-  width: 240px;
-  height: 300px;
   border-radius: 4px;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
   box-sizing: border-box;

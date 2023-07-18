@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import InputLabel from '@mui/material/InputLabel'
 import './SelectCategory.css'
-import { Autocomplete, TextField, Typography } from '@mui/material'
+import { Autocomplete, Grid, TextField, Typography } from '@mui/material'
 import { ThemeContext } from '../Context/Theme'
 
 const lala = [
@@ -43,7 +43,7 @@ export default function SelectCategory() {
 console.log(category)
   
   return (
-    <div id="content-imput">
+    <Grid item xs={12} sm={12} md={3} lg={3} id="content-imput">
       <InputLabel id="label-budget" htmlFor="component-outlined">
         <Typography variant="body1">Selecciona una categoría</Typography>
       </InputLabel>
@@ -57,6 +57,6 @@ console.log(category)
           <TextField onChange={handleCategory} type="text" {...params} />
         )}
       />
-    </div>
+    </Grid>
   )
 }

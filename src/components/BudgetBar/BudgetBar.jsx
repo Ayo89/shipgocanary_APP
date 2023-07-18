@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import SelectCategory from '../SelectCategory/SelectCategory'
 import InputLabel from '@mui/material/InputLabel'
 import './BudgetBar.css'
-import { Autocomplete, Button, TextField, Typography } from '@mui/material'
+import { Autocomplete, Box, Button, Grid, TextField, Typography } from '@mui/material'
 import { useContext } from 'react'
 import { ThemeContext } from '../Context/Theme'
 
@@ -43,62 +43,71 @@ function BudgetBar( ) {
   }, [desde])
 
   return (
-    <div className="container-budget">
-      <SelectCategory />
-      <div>
-        <InputLabel id="label-budget" htmlFor="component-outlined">
-          <Typography variant="body1">¿Desde?</Typography>
-        </InputLabel>
-        <Autocomplete
-          isOptionEqualToValue={(option, value) => option.label !== value.label}
-          className="imput-budget"
-          id="imputs"
-          value={desde ? desde : ''}
-          options={direction ? direction : [{ label: 'not options' }]}
-          label="Name"
-          renderInput={(params) => (
-            <TextField
-              onSelect={(e) => setDesde(e.target.value)}
-              type="text"
-              {...params}
-            />
-          )}
-        />
-      </div>
-      <div>
-        <InputLabel id="label-budget" htmlFor="component-outlined">
-          <Typography variant="body1">¿Hasta?</Typography>
-        </InputLabel>
-        <Autocomplete
-          isOptionEqualToValue={(option, value) => option.label !== value.label}
-          className="imput-budget"
-          id="imputs"
-          value={hasta ? hasta : ''}
-          options={direction2 ? direction2 : [{ label: 'not options' }]}
-          label="Name"
-          renderInput={(params) => (
-            <TextField
-              onSelect={(e) => setHasta(e.target.value)}
-              type="text"
-              {...params}
-            />
-          )}
-        />
-      </div>
-      <div id="wrapper-buttom">
-        <Button
-          className="budget-buttom"
-          style={{
-            color: '#000',
-            height: '4.4rem',
-            backgroundColor: 'var(--background-color',
-          }}
-          onClick={handleCreateShipmentStep}
-        >
-          <Typography variant="button">Pedir Presupuesto</Typography>
-        </Button>
-      </div>
-    </div>
+    <Box className="container-budget">
+      <Grid id='container-grid-budget' container >
+        <SelectCategory />
+        <Grid item xs={12} sm={12} md={2} lg={2}>
+          <InputLabel id="label-budget" htmlFor="component-outlined">
+            <Typography variant="body1">¿Desde?</Typography>
+          </InputLabel>
+          <Autocomplete
+            isOptionEqualToValue={(option, value) =>
+              option.label !== value.label
+            }
+            className="imput-budget"
+            id="imputs"
+            value={desde ? desde : ''}
+            options={direction ? direction : [{ label: 'not options' }]}
+            label="Name"
+            renderInput={(params) => (
+              <TextField
+                onSelect={(e) => setDesde(e.target.value)}
+                type="text"
+                {...params}
+              />
+            )}
+          />
+        </Grid>
+        <Grid item xs={12} sm={12} md={2} lg={2}>
+          <InputLabel id="label-budget" htmlFor="component-outlined">
+            <Typography variant="body1">¿Hasta?</Typography>
+          </InputLabel>
+          <Autocomplete
+            isOptionEqualToValue={(option, value) =>
+              option.label !== value.label
+            }
+            className="imput-budget"
+            id="imputs"
+            value={hasta ? hasta : ''}
+            options={direction2 ? direction2 : [{ label: 'not options' }]}
+            label="Name"
+            renderInput={(params) => (
+              <TextField
+                onSelect={(e) => setHasta(e.target.value)}
+                type="text"
+                {...params}
+              />
+            )}
+          />
+        </Grid>
+        <Grid item xs={12} sm={12} md={3} lg={3} id="wrapper-buttom">
+          <InputLabel  id="label-budget" htmlFor="component-outlined">
+            <Typography variant="body1"></Typography>
+          </InputLabel>
+          <Button
+            className="budget-buttom"
+            style={{
+              color: '#000',
+
+              backgroundColor: 'var(--background-color',
+            }}
+            onClick={handleCreateShipmentStep}
+          >
+            <Typography variant="button">Pedir Presupuesto</Typography>
+          </Button>
+        </Grid>
+      </Grid>
+    </Box>
   )
 }
 

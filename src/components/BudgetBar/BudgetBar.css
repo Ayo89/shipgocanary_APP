@@ -1,22 +1,27 @@
 .container-budget {
   width: 70vw;
   display: flex;
-  align-items: center;
   justify-content: space-evenly;
   margin-top: 20px;
-  padding: 2rem 2rem 2.6rem 2rem;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
   flex: 1;
+  padding: 2rem;
+}
+
+#container-grid-budget{
+  display: flex;
+  justify-content: space-between;
 }
 
 #wrapper-buttom {
-  margin-top: 16px;
-  margin-left: 24px;
-  width: 20%;
+  padding-top: 18px;
+display: flex;
+justify-content: center;
+flex-direction: column;
 }
 
 .budget-buttom {
-  flex: 1;
+  height: 3.4rem;
   width: 100% !important;
   font-size: 1rem !important;
   font-weight: 700 !important;
@@ -27,9 +32,7 @@
   background-color: var(--background-color) !important;
   transform: scale(1.1);
 }
-#imputs{
-  width: 20% ;
-}
+
 .imput-budget {
   background-color: #fff;
 }

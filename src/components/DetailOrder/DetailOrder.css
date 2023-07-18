@@ -1,14 +1,14 @@
 #container-details{
-  width: inherit;
-  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 24px;
 }
 #wrapper-details{
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100%;
   width: 70rem;
   background-color: var(--background-color);
   border-radius: 4px;
@@ -18,9 +18,9 @@ padding: 24px;
   font-size: 1.8rem !important;
 
 }
-#container-details .grid-details{
-  padding: 24px;
+#wrapper-details .grid-details{
+  padding: 14px;
 }
-#container-details #grid-price{
+#wrapper-details #grid-price{
   padding: 14px !important;
 }

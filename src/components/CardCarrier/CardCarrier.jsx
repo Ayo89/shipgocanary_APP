@@ -28,7 +28,7 @@ function CardCarrier() {
           </Typography>
         </CardContent>
         <CardActions id="content-button">
-          <Button  size="medium">Pedir presupuesto</Button>
+          <Button  size="large">Pedir presupuesto</Button>
         </CardActions>
       </Card>
     </div>

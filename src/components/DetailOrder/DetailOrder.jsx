@@ -50,8 +50,8 @@ function DetailOrder() {
 
 
   return (
-    <div id="container-details">
-      <Grid id="wrapper-details" container spacing={5}>
+    <Grid id={'container-details'} container xs={12} sm={12} md={6} lg={6}>
+      <Grid id="wrapper-details" container>
         <Grid className="grid-details" item xs={12} md={8}>
           <InputLabel>
             <Typography
@@ -88,8 +88,8 @@ function DetailOrder() {
             placeholder="0"
           />
         </Grid>
-        <Grid id="grid-price" item xs={4} sm={4} md={4}>
-          <InputLabel style={{ textAlign: 'end' }}>
+        <Grid id="grid-price" item xs={12} sm={4} md={4}>
+          <InputLabel>
             <Typography
               className="label-details"
               component={'label'}
@@ -99,7 +99,7 @@ function DetailOrder() {
             </Typography>
           </InputLabel>
         </Grid>
-        <Grid className="grid-details" item xs={8} sm={8} md={8}>
+        <Grid className="grid-details" item xs={12} sm={8} md={8}>
           <TextField
             value={services}
             onChange={handleService}
@@ -109,7 +109,7 @@ function DetailOrder() {
           />
         </Grid>
 
-        <Grid className="grid-details" item xs={10} sm={10} md={6}>
+        <Grid className="grid-details" item xs={12} sm={12} md={6}>
           <InputLabel>
             <Typography
               className="label-details"
@@ -126,21 +126,24 @@ function DetailOrder() {
             fullWidth
           />
         </Grid>
-        <Grid className="grid-details" item xs={10} sm={10} md={6}>
-          <CardMedia
-            component="div"
-            style={{
-              height: '200px',
-              flex: '1', // Asegura que el ancho sea el 100% del contenedor
-              backgroundSize: 'contain', // Asegura que la imagen se ajuste completamente dentro del contenedor
-              backgroundImage: `url(${imageService})`, // Utiliza la propiedad de imagen de fondo para tener un control más granular sobre cómo se muestra la imagen
-              backgroundRepeat: 'no-repeat', // Evita que la imagen se repita
-              backgroundPosition: 'center', // Centra la imagen dentro del contenedor
-            }}
-            alt="green iguana"
-          />
-        </Grid>
-        <Grid className="grid-details" item xs={10} sm={10} md={10}>
+        {imageService && (
+          <Grid className="grid-details" item xs={12} sm={12} md={6}>
+            <CardMedia
+              component="div"
+              style={{
+                height: '200px',
+                flex: '1', // Asegura que el ancho sea el 100% del contenedor
+                backgroundSize: 'contain', // Asegura que la imagen se ajuste completamente dentro del contenedor
+                backgroundImage: `url(${imageService})`, // Utiliza la propiedad de imagen de fondo para tener un control más granular sobre cómo se muestra la imagen
+                backgroundRepeat: 'no-repeat', // Evita que la imagen se repita
+                backgroundPosition: 'center', // Centra la imagen dentro del contenedor
+              }}
+              alt="green iguana"
+            />
+          </Grid>
+        )}
+
+        <Grid className="grid-details" item xs={12} sm={12} md={12}>
           <InputLabel>
             <Typography
               className="label-details"
@@ -158,8 +161,8 @@ function DetailOrder() {
             placeholder="Descripción"
           />
         </Grid>
-        <Grid id="grid-price" item xs={6} sm={3} md={3}>
-          <InputLabel style={{ textAlign: 'end' }}>
+        <Grid id="grid-price" item xs={12} sm={3} md={2}>
+          <InputLabel>
             <Typography
               className="label-details"
               component={'label'}
@@ -169,7 +172,7 @@ function DetailOrder() {
             </Typography>
           </InputLabel>
         </Grid>
-        <Grid id="grid-price" item xs={6} sm={3} md={3}>
+        <Grid id="grid-price" item xs={12} sm={3} md={4}>
           <TextField
             value={price}
             onChange={handlePrice}
@@ -192,7 +195,7 @@ function DetailOrder() {
           </Box>
         </Grid>
       </Grid>
-    </div>
+    </Grid>
   )
 }
 
