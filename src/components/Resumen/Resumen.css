@@ -14,6 +14,7 @@
   font-size: 1.4rem !important;
 }
 #footer-resumen{
+  margin-top: 14px;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -24,6 +25,4 @@
   display: flex;
   justify-content: center;
   align-items: end;
-  margin-top: 24px;
-
 }

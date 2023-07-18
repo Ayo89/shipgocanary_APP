@@ -15,17 +15,21 @@ import { Container } from '@mui/material'
 
 function HeaderLogged() {
   return (
-        <Toolbar style={{display: 'flex', backgroundColor: 'var(--background-color)'}}>
-          <Box className="content-img">
-            <img className="img-logo" src={logo} alt="imagen del logo" />
-          </Box>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1 }}
-          ></Typography>
-          <MenuHeader />
-        </Toolbar>
+    <Toolbar
+      style={{ display: 'flex', backgroundColor: 'var(--background-color)' }}
+    >
+      <Box className="content-img">
+        <Link to="/">
+          <img className="img-logo" src={logo} alt="imagen del logo" />
+        </Link>
+      </Box>
+      <Typography
+        variant="h6"
+        component="div"
+        sx={{ flexGrow: 1 }}
+      ></Typography>
+      <MenuHeader />
+    </Toolbar>
   )
 }
 

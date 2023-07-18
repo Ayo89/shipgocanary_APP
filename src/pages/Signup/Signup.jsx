@@ -131,7 +131,7 @@ function Signup() {
     } else {
       await signup(name,lastName,phone, email, password)
       if (!localStorage.getItem('token')) alert('Error')
-      else navigate('/home')
+      else navigate('/')
     }
   }
 

@@ -16,7 +16,9 @@ export default function Header() {
       style={{ display: 'flex', backgroundColor: 'var(--background-color)' }}
     >
       <Box className="content-img">
+        <Link to='/'>
         <img className="img-logo" src={logo} alt="imagen del logo" />
+        </Link>
       </Box>
       <Typography
         variant="h6"

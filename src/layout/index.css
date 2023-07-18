@@ -11,11 +11,17 @@
   align-items: center;
   height: 100vh;
   flex:1;
+  padding-bottom: 24px;
 }
 
 #footerito {
-  background-color: blue;
-  margin-top: auto
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  background-color: var(--background-color);
+  margin-top:  auto;
+
 
 }
 a{

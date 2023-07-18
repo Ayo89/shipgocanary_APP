@@ -10,7 +10,7 @@ export const createShipmentService = async (
   title,
   quantity,
   services,
-  imgShipment,
+  imageService,
   description,
   price
 ) => {
@@ -22,7 +22,7 @@ export const createShipmentService = async (
         quantity,
         service: services,
         category_id,
-        img: imgShipment,
+        img: imageService,
         description,
         from_direction: desde,
         to_direction: hasta,

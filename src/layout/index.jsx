@@ -3,7 +3,7 @@ import Header from '../components/Header/Header'
 import { getUserLogged } from '../../services/user.service'
 import HeaderLogged from '../components/HeaderLogged/HeaderLogged'
 import { useEffect, useState } from 'react'
-import { Box, Container } from '@mui/material'
+import { Box, Container, Typography } from '@mui/material'
 import './index.css'
 import '../components/HeaderLogged/HeaderLogged.css'
 import { ThemeContext } from '../components/Context/Theme'
@@ -15,6 +15,7 @@ import {
   updateShipmentCategory,
 } from '../../services/category.service'
 import { createShipmentService } from '../../services/shipment.service'
+import { getImage } from '../../services/image.service'
 
 const steps = [
   'Escoge una categoría',
@@ -50,6 +51,8 @@ function Root() {
   const [imgShipment, setImgShipment] = useState('')
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState('')
+
+  const [imageService, setImageService] = useState('')
 
   const navigate = useNavigate()
   //Map
@@ -192,12 +195,23 @@ function Root() {
   }
 
   useEffect(() => {
-    getAllCategories()
+   
+      getAllCategories()
+
+    
   }, [])
 
   const addCategoryToShipment = async (category_id) => {
     const { data } = await updateShipmentCategory(category_id)
     return data
+  }
+
+  //images
+  const getImageService = async (event) => {
+    const file = event.target.files[0]
+    const data = await getImage(file)
+    console.log(data)
+    setImageService(data)
   }
 
   //SHIPMENTS
@@ -211,13 +225,14 @@ function Root() {
       title,
       quantity,
       services,
-      imgShipment,
+      imageService,
       description,
       price
     )
     setShipment(res)
     setDesde('')
     setHasta('')
+    setImageService('')
     navigate('/')
   }
   const handleResumen = () => {
@@ -256,6 +271,8 @@ function Root() {
   console.log(sendDate)
   console.log(receiveDate) */
 
+  console.log(imgShipment)
+  console.log(imageService)
   const theme = {
     desde,
     hasta,
@@ -318,6 +335,9 @@ function Root() {
     setMap,
     //shipmets
     createShipment,
+    //images
+    imageService,
+    getImageService,
   }
 
   const changeHeader = () => {
@@ -343,7 +363,12 @@ function Root() {
           <Container id="container-body-layout" maxWidth="100">
             <Outlet />
           </Container>
-          <Box id="footerito">Soy el footer de verdad!!!</Box>
+          <Box id="footerito">
+            {' '}
+            <Typography>
+              &#169; Copyright 2023 por Ayoze
+            </Typography>
+          </Box>
         </Box>
       </ThemeContext.Provider>
     </>

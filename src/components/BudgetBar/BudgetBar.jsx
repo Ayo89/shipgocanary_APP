@@ -91,7 +91,7 @@ function BudgetBar( ) {
           style={{
             color: '#000',
             height: '4.4rem',
-            backgroundColor: 'var(--background-buttom',
+            backgroundColor: 'var(--background-color',
           }}
           onClick={handleCreateShipmentStep}
         >

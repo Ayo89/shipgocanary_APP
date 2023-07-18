@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardContent, Grid, InputLabel, TextField, Typography } from '@mui/material'
+import { Box, Button, Card, CardContent, CardMedia, Grid, InputLabel, TextField, Typography } from '@mui/material'
 import './DetailOrder.css'
 import { useContext } from 'react'
 import { ThemeContext } from '../Context/Theme'
@@ -39,7 +39,14 @@ function DetailOrder() {
       handleService,
       handleImgShipment,
       handleDescription,
+      //images
+      imageService,
+      getImageService,
     } = useContext(ThemeContext)
+
+ 
+
+
 
 
   return (
@@ -101,7 +108,8 @@ function DetailOrder() {
             placeholder="Ej: Necesito ayuda a descargar la mercancía"
           />
         </Grid>
-        <Grid className="grid-details" item xs={10} sm={10} md={10}>
+
+        <Grid className="grid-details" item xs={10} sm={10} md={6}>
           <InputLabel>
             <Typography
               className="label-details"
@@ -112,11 +120,24 @@ function DetailOrder() {
             </Typography>
           </InputLabel>
           <TextField
-            value={imgShipment}
-            onChange={handleImgShipment}
+            onChange={getImageService}
             style={{ background: '#fff', borderRadius: '4px' }}
             type="file"
             fullWidth
+          />
+        </Grid>
+        <Grid className="grid-details" item xs={10} sm={10} md={6}>
+          <CardMedia
+            component="div"
+            style={{
+              height: '200px',
+              flex: '1', // Asegura que el ancho sea el 100% del contenedor
+              backgroundSize: 'contain', // Asegura que la imagen se ajuste completamente dentro del contenedor
+              backgroundImage: `url(${imageService})`, // Utiliza la propiedad de imagen de fondo para tener un control más granular sobre cómo se muestra la imagen
+              backgroundRepeat: 'no-repeat', // Evita que la imagen se repita
+              backgroundPosition: 'center', // Centra la imagen dentro del contenedor
+            }}
+            alt="green iguana"
           />
         </Grid>
         <Grid className="grid-details" item xs={10} sm={10} md={10}>

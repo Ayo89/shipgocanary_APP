@@ -7,7 +7,7 @@ import {
   GoogleMap,
   LoadScriptNext,
 } from '@react-google-maps/api'
-import { Autocomplete, Box, Button, Grid, InputLabel, TextField, Typography } from '@mui/material'
+import { Autocomplete, Box, Button, CardMedia, Grid, InputLabel, TextField, Typography } from '@mui/material'
 
 function Resumen() {
   const API_KEY = 'AIzaSyBfQB6JYLKVUG80JLz26cZCzTkN-PKHF-Y'
@@ -80,6 +80,8 @@ function Resumen() {
     getDistance,
     map,
     setMap,
+    //image
+    imageService,
     //shipments
     createShipment,
   } = useContext(ThemeContext)
@@ -99,12 +101,12 @@ function Resumen() {
   return (
     <div id="container-resumen">
       <Grid container spacing={2}>
-        <Grid display={'flex'} flexDirection={'column'} item xs={12} sm={6}>
+        <Grid display={'flex'} flexDirection={'column'} item xs={12} sm={5}>
           <Grid id="header-resumen" container spacing={2}>
             <Grid item xs={12} sm={12}>
               <Typography variant="h4">Titulo: {title}</Typography>
             </Grid>
-            <Grid item xs={12} sm={12}>
+            <Grid item xs={12} sm={8}>
               <InputLabel id="label-budget" htmlFor="component-outlined">
                 <Typography variant="h4" color={'#000'}>
                   ¿Desde?
@@ -129,7 +131,7 @@ function Resumen() {
                 )}
               />
             </Grid>
-            <Grid item xs={12} sm={12}>
+            <Grid item xs={12} sm={8}>
               <InputLabel id="label-budget" htmlFor="component-outlined">
                 <Typography variant="h4" color={'#000'}>
                   ¿Hasta?
@@ -158,23 +160,23 @@ function Resumen() {
                 )}
               />
             </Grid>
-            <Grid item xs={12} sm={12}>
-              <Typography className="text-resumen" variant="body1">
-                Distacia:{' '}
-                <Typography
-                  className="text-resumen"
-                  variant="body1"
-                  color={'#000'}
-                  fontWeight={700}
-                  component={'span'}
-                >
-                  {distance.length !== '' && distance}
-                </Typography>
-              </Typography>
-            </Grid>
           </Grid>
           <div id="footer-resumen">
-            <Grid container spacing={2}>
+            <Grid container spacing={1}>
+              <Grid item xs={12} sm={12}>
+                <Typography className="text-resumen" variant="body1">
+                  Distancia:{' '}
+                  <Typography
+                    className="text-resumen"
+                    variant="body1"
+                    color={'#000'}
+                    fontWeight={700}
+                    component={'span'}
+                  >
+                    {distance.length !== '' && distance}
+                  </Typography>
+                </Typography>
+              </Grid>
               <Grid item xs={12} sm={12}>
                 <Typography className="text-resumen" variant="body1">
                   Fecha de recogida:{' '}
@@ -217,6 +219,28 @@ function Resumen() {
                   </Typography>
                 </Typography>
               </Grid>
+              <Grid
+                style={{
+                  padding: '14px 0',
+                }}
+                item
+                xs={10}
+                sm={10}
+                md={12}
+              >
+                <CardMedia
+                  component="div"
+                  style={{
+                    height: '160px',
+                    flex: '1', // Asegura que el ancho sea el 100% del contenedor
+                    backgroundSize: 'contain', // Asegura que la imagen se ajuste completamente dentro del contenedor
+                    backgroundImage: `url(${imageService})`, // Utiliza la propiedad de imagen de fondo para tener un control más granular sobre cómo se muestra la imagen
+                    backgroundRepeat: 'no-repeat', // Evita que la imagen se repita
+                    backgroundPosition: 'center', // Centra la imagen dentro del contenedor
+                  }}
+                  alt="green iguana"
+                />
+              </Grid>
               <Grid id="content-button" item xs={12} sm={12}>
                 <Grid item xs={6} sm={6} id="content-button">
                   <Button
@@ -238,7 +262,7 @@ function Resumen() {
             </Grid>
           </div>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={7}>
           <LoadScriptNext googleMapsApiKey={API_KEY}>
             <GoogleMap
               mapContainerStyle={containerStyle}

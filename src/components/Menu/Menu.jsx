@@ -12,6 +12,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import { Avatar, Box, IconButton, Tooltip, Typography } from '@mui/material'
 
 import imgAvatar from '../../assets/images.png'
+import { useNavigate } from 'react-router-dom'
 
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
@@ -19,11 +20,12 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
 export default function MenuHeader() {
   const [anchorElNav, setAnchorElNav] = React.useState(null)
   const [anchorElUser, setAnchorElUser] = React.useState(null)
-
+  const navigate = useNavigate()
     const handleOpenNavMenu = (event) => {
       setAnchorElNav(event.currentTarget)
     }
     const handleOpenUserMenu = (event) => {
+
       setAnchorElUser(event.currentTarget)
     }
 
@@ -31,9 +33,18 @@ export default function MenuHeader() {
       setAnchorElNav(null)
     }
 
-    const handleCloseUserMenu = () => {
-      setAnchorElUser(null)
+    const handleCloseUserMenu = (setting) => {
+      console.log(setting)
+            if (setting === 'Logout'){
+              logout()
+            }
+             setAnchorElUser(null)
     }
+
+      const logout = () => {
+        localStorage.removeItem('token')
+        navigate('/login')
+      }
 
   return (
     <Box sx={{ flexGrow: 0 }}>
@@ -59,7 +70,7 @@ export default function MenuHeader() {
         onClose={handleCloseUserMenu}
       >
         {settings.map((setting) => (
-          <MenuItem key={setting} onClick={handleCloseUserMenu}>
+          <MenuItem key={setting} onClick={() => handleCloseUserMenu(setting)}>
             <Typography textAlign="center">{setting}</Typography>
           </MenuItem>
         ))}
