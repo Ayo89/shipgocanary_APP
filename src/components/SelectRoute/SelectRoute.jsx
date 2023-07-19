@@ -18,7 +18,7 @@ import {
   Typography,
 } from '@mui/material'
 
-const API_KEY = 'AIzaSyBfQB6JYLKVUG80JLz26cZCzTkN-PKHF-Y'
+
 
 const containerStyle = {
   height: '600px',
@@ -63,6 +63,7 @@ function SelectRoute() {
     getDistance,
     map,
     setMap,
+    API_KEY,
   } = useContext(ThemeContext)
  
 
@@ -78,10 +79,19 @@ function SelectRoute() {
     getAutocomplete()
   }, [desde])
 
+
   return (
     <>
       <Grid container id="container-route" rowGap={4}>
-        <Grid container xs={12} sm={12} md={6} lg={6} rowGap={3} id="header-route">
+        <Grid
+          container
+          xs={12}
+          sm={12}
+          md={6}
+          lg={6}
+          rowGap={3}
+          id="header-route"
+        >
           <Grid item xs={12} sm={8} md={10} lg={8}>
             <InputLabel id="label-budget" htmlFor="component-outlined">
               <Typography variant="h4" color={'#000'}>
@@ -174,7 +184,7 @@ function SelectRoute() {
               type="date"
             />
           </Grid>
-          <Grid className='imput-route' item xs={12} sm={8} md={10} lg={8}>
+          <Grid className="imput-route" item xs={12} sm={8} md={10} lg={8}>
             <InputLabel id="label-budget" htmlFor="component-outlined">
               <Typography variant="h5" color={'#000'}>
                 Fecha de entrega
@@ -199,7 +209,7 @@ function SelectRoute() {
             </Button>
           </Grid>
         </Grid>
-        <Grid container xs={12} sm={12} md={6} lg={6} >
+        <Grid container xs={12} sm={12} md={6} lg={6}>
           <LoadScriptNext googleMapsApiKey={API_KEY}>
             <GoogleMap
               mapContainerStyle={containerStyle}

@@ -10,8 +10,6 @@ import {
 import { Autocomplete, Box, Button, CardMedia, Grid, InputLabel, TextField, Typography } from '@mui/material'
 
 function Resumen() {
-  const API_KEY = 'AIzaSyBfQB6JYLKVUG80JLz26cZCzTkN-PKHF-Y'
-
   const containerStyle = {
     height: '600px',
     flex: '1',
@@ -84,6 +82,7 @@ function Resumen() {
     imageService,
     //shipments
     createShipment,
+    API_KEY,
   } = useContext(ThemeContext)
 
 

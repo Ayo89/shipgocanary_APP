@@ -17,6 +17,7 @@ import {
 import { createShipmentService } from '../../services/shipment.service'
 import { getImage } from '../../services/image.service'
 
+
 const steps = [
   'Escoge una categoría',
   'Escoge una ruta',
@@ -25,6 +26,8 @@ const steps = [
 ]
 
 function Root() {
+  const API_KEY = import.meta.env.VITE_APP_API_KEY
+
   const [directions, setDirections] = useState(null)
   const [distance, setDistance] = useState('')
   const [map, setMap] = useState(null)
@@ -360,6 +363,7 @@ function Root() {
     imageService,
     getImageService,
     getAllCategories,
+    API_KEY,
   }
 
   const changeHeader = () => {
