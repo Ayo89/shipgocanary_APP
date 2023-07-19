@@ -209,7 +209,7 @@ function SelectRoute() {
           </Grid>
         </Grid>
         <Grid container xs={12} sm={12} md={6} lg={6}>
-          <LoadScriptNext googleMapsApiKey={import.meta.env.API_KEY}>
+          <LoadScriptNext googleMapsApiKey={import.meta.env.VITE_APP_API_KEY}>
             <GoogleMap
               mapContainerStyle={containerStyle}
               center={defaultCenter}
