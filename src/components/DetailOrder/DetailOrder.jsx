@@ -2,6 +2,7 @@ import { Box, Button, Card, CardContent, CardMedia, Grid, InputLabel, TextField,
 import './DetailOrder.css'
 import { useContext } from 'react'
 import { ThemeContext } from '../Context/Theme'
+import defaultImg from '../../assets/default-placeholder.png'
 
 function DetailOrder() {
     const {
@@ -126,23 +127,23 @@ function DetailOrder() {
             fullWidth
           />
         </Grid>
-        {imageService && (
-          <Grid className="grid-details" item xs={12} sm={12} md={6}>
-            <CardMedia
-              component="div"
-              style={{
-                height: '200px',
-                flex: '1', // Asegura que el ancho sea el 100% del contenedor
-                backgroundSize: 'contain', // Asegura que la imagen se ajuste completamente dentro del contenedor
-                backgroundImage: `url(${imageService})`, // Utiliza la propiedad de imagen de fondo para tener un control más granular sobre cómo se muestra la imagen
-                backgroundRepeat: 'no-repeat', // Evita que la imagen se repita
-                backgroundPosition: 'center', // Centra la imagen dentro del contenedor
-              }}
-              alt="green iguana"
-            />
-          </Grid>
-        )}
 
+        <Grid className="grid-details" item xs={12} sm={12} md={6}>
+          <CardMedia
+            component="div"
+            style={{
+              height: '200px',
+              flex: '1', // Asegura que el ancho sea el 100% del contenedor
+              backgroundSize: 'contain', // Asegura que la imagen se ajuste completamente dentro del contenedor
+              backgroundImage: `url(${
+                imageService ? imageService : defaultImg
+              })`, // Utiliza la propiedad de imagen de fondo para tener un control más granular sobre cómo se muestra la imagen
+              backgroundRepeat: 'no-repeat', // Evita que la imagen se repita
+              backgroundPosition: 'center', // Centra la imagen dentro del contenedor
+            }}
+            alt="green iguana"
+          />
+        </Grid>
         <Grid className="grid-details" item xs={12} sm={12} md={12}>
           <InputLabel>
             <Typography
@@ -161,8 +162,17 @@ function DetailOrder() {
             placeholder="Descripción"
           />
         </Grid>
-        <Grid id="grid-price" item xs={12} sm={3} md={2}>
-          <InputLabel>
+        <Grid
+          display={'flex'}
+          justifyContent={'start'}
+          gap={2}
+          id="grid-price"
+          item
+          xs={12}
+          sm={6}
+          md={6}
+        >
+          <InputLabel className="input-label-details">
             <Typography
               className="label-details"
               component={'label'}
@@ -171,8 +181,6 @@ function DetailOrder() {
               Price:
             </Typography>
           </InputLabel>
-        </Grid>
-        <Grid id="grid-price" item xs={12} sm={3} md={4}>
           <TextField
             value={price}
             onChange={handlePrice}

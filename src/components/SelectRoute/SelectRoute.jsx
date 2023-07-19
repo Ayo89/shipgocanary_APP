@@ -32,7 +32,7 @@ const defaultCenter = {
 
 const libraries = ['places']
 
-function SelectRoute({ step }) {
+function SelectRoute() {
   const {
     desde,
     confirmDirections,

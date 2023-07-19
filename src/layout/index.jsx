@@ -189,16 +189,13 @@ function Root() {
     const data =
       res &&
       res.map((option) => {
-        return { label: option.name }
+        return { label: option.name, index: option._id }
       })
     setCategories(data)
   }
 
   useEffect(() => {
-   
-      getAllCategories()
-
-    
+    getAllCategories()
   }, [])
 
   const addCategoryToShipment = async (category_id) => {
@@ -216,6 +213,7 @@ function Root() {
 
   //SHIPMENTS
   const createShipment = async () => {
+     console.log('hi')
     const res = await createShipmentService(
       categoryId,
       desde,
@@ -230,9 +228,18 @@ function Root() {
       price
     )
     setShipment(res)
-    setDesde('')
-    setHasta('')
-    setImageService('')
+       setDesde('')
+       setHasta('')
+       setSendDate('')
+       setReceiveDate('')
+       setDistance('')
+       setImageService('')
+       setTitle('')
+       setQuantity('')
+       setServices('')
+       setDescription('')
+       setPrice('')
+
     navigate('/')
   }
   const handleResumen = () => {
@@ -248,12 +255,16 @@ function Root() {
   console.log(category)
 
   const handleCreateShipmentStep = () => {
-    if (category === '') {
-      setActiveStep(0)
-      navigate('/create-shipment')
+    if (localStorage.getItem('token')) {
+      if (category === '') {
+        setActiveStep(0)
+        navigate('/create-shipment')
+      } else {
+        setActiveStep(1)
+        navigate('/create-shipment')
+      }
     } else {
-      setActiveStep(1)
-      navigate('/create-shipment')
+      navigate('/login')
     }
   }
   const handleCategoryStep = async (category_id) => {
@@ -282,9 +293,18 @@ function Root() {
     setDirection,
     setDirection2,
     setDesde,
+    setSendDate,
+    setReceiveDate,
+    setDistance,
     setHasta,
     handleDesde,
     handleHasta,
+    setImageService,
+    setTitle,
+    setQuantity,
+    setServices,
+    setDescription,
+    setPrice,
     setConfirmDirections,
     getAutocomplete,
     getAutocomplete2,
@@ -306,6 +326,7 @@ function Root() {
     categoryId,
     categories,
     category,
+    setCategoryId,
     handleCategory,
     //dates
     sendDate,
@@ -338,6 +359,7 @@ function Root() {
     //images
     imageService,
     getImageService,
+    getAllCategories,
   }
 
   const changeHeader = () => {
@@ -366,9 +388,7 @@ function Root() {
           </Grid>
           <Box id="footerito">
             {' '}
-            <Typography>
-              &#169; Copyright 2023 por Ayoze
-            </Typography>
+            <Typography>&#169; Copyright 2023 por Ayoze</Typography>
           </Box>
         </Box>
       </ThemeContext.Provider>

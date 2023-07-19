@@ -103,7 +103,7 @@ function BudgetBar( ) {
             }}
             onClick={handleCreateShipmentStep}
           >
-            <Typography variant="button">Pedir Presupuesto</Typography>
+            <Typography variant="button">Empezar a crear envio</Typography>
           </Button>
         </Grid>
       </Grid>

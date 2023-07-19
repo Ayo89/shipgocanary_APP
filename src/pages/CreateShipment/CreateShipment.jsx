@@ -53,7 +53,7 @@ export default function CreateShipment() {
       return <Category/>
 
     } else if (activeStep === 1) {
-      return <SelectRoute step={handleDetails} />
+      return <SelectRoute />
     }
     else if(activeStep === 2) {
       return <DetailOrder/>
