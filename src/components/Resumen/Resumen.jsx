@@ -82,7 +82,6 @@ function Resumen() {
     imageService,
     //shipments
     createShipment,
-    API_KEY,
   } = useContext(ThemeContext)
 
 

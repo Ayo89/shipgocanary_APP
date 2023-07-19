@@ -353,7 +353,6 @@ function Root() {
     imageService,
     getImageService,
     getAllCategories,
-    API_KEY,
   }
 
   const changeHeader = () => {

@@ -63,7 +63,6 @@ function SelectRoute() {
     getDistance,
     map,
     setMap,
-    API_KEY,
   } = useContext(ThemeContext)
  
 
