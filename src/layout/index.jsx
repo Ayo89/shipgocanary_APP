@@ -26,7 +26,6 @@ const steps = [
 ]
 
 function Root() {
-  const API_KEY = import.meta.env.VITE_APP_API_KEY
 
   const [directions, setDirections] = useState(null)
   const [distance, setDistance] = useState('')

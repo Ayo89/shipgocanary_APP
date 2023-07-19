@@ -262,7 +262,7 @@ function Resumen() {
           </div>
         </Grid>
         <Grid item xs={12} sm={7}>
-          <LoadScriptNext googleMapsApiKey={API_KEY}>
+          <LoadScriptNext googleMapsApiKey={import.meta.env.API_KEY}>
             <GoogleMap
               mapContainerStyle={containerStyle}
               center={defaultCenter}
