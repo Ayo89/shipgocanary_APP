@@ -210,13 +210,11 @@ function Root() {
   const getImageService = async (event) => {
     const file = event.target.files[0]
     const data = await getImage(file)
-    console.log(data)
     setImageService(data)
   }
 
   //SHIPMENTS
   const createShipment = async () => {
-     console.log('hi')
     const res = await createShipmentService(
       categoryId,
       desde,
@@ -255,7 +253,6 @@ function Root() {
     setActiveStep(newActiveStep)
   }
 
-  console.log(category)
 
   const handleCreateShipmentStep = () => {
     if (localStorage.getItem('token')) {
@@ -281,12 +278,6 @@ function Root() {
     setActiveStep(newActiveStep)
   }
 
-  /*   console.log(categoryId)
-  console.log(sendDate)
-  console.log(receiveDate) */
-
-  console.log(imgShipment)
-  console.log(imageService)
   const theme = {
     desde,
     hasta,
