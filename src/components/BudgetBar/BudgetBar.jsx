@@ -44,7 +44,7 @@ function BudgetBar( ) {
 
   return (
     <Box className="container-budget">
-      <Grid id='container-grid-budget' container >
+      <Grid id="container-grid-budget" container>
         <SelectCategory />
         <Grid item xs={12} sm={12} md={2} lg={2}>
           <InputLabel id="label-budget" htmlFor="component-outlined">
@@ -91,7 +91,11 @@ function BudgetBar( ) {
           />
         </Grid>
         <Grid item xs={12} sm={12} md={3} lg={3} id="wrapper-buttom">
-          <InputLabel  id="label-budget" htmlFor="component-outlined">
+          <InputLabel id="label-budget" htmlFor="component-outlined">
+            <Typography variant="body1"></Typography>
+            <br/>
+          </InputLabel>
+          <InputLabel id="label-budget" htmlFor="component-outlined">
             <Typography variant="body1"></Typography>
           </InputLabel>
           <Button

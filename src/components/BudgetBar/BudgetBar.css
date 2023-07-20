@@ -13,12 +13,7 @@
   justify-content: space-between;
 }
 
-#wrapper-buttom {
-  padding-top: 18px;
-display: flex;
-justify-content: center;
-flex-direction: column;
-}
+
 
 .budget-buttom {
   height: 3.4rem;
